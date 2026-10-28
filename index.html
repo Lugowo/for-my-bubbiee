@@ -933,9 +933,16 @@
       };
 
       let appConfig = JSON.parse(JSON.stringify(DEFAULT_CONFIG));
-
-      function saveState() {
-        // Kosongkan agar perubahan tidak disimpan ke cache browser
+      try {
+        const saved = localStorage.getItem("cosmic_bday_0611_interstellar");
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (parsed && Array.isArray(parsed.wishes)) {
+            appConfig.wishes = parsed.wishes;
+          }
+        }
+      } catch (e) {
+        // Ignore storage error in restricted iframe
       }
 
       function saveState() {
