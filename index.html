@@ -1,0 +1,2232 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>06.11.2026 — Horizon Event &amp; Transmisi Angkasa Untukmu</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-void: #010101;
+      --bg-surface: rgba(10, 10, 10, 0.62);
+      --border-dim: rgba(255, 255, 255, 0.16);
+      --border-bright: rgba(255, 255, 255, 0.52);
+      --text-main: #ffffff;
+      --text-muted: #a3a3a3;
+    }
+
+    * {
+      box-sizing: border-box;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.28) #030303;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-void);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      background-color: #010101;
+      color: #ffffff;
+      min-height: 100vh;
+    }
+
+    .font-serif-editorial {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    .font-mono-tech {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Glass & Monochrome Cards with Desktop & Mobile 3D Tilt & Specular Glare */
+    .cosmic-card {
+      position: relative;
+      background: linear-gradient(145deg, rgba(16, 16, 16, 0.64) 0%, rgba(4, 4, 4, 0.78) 100%);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.22s ease-out;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    .cosmic-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      background: radial-gradient(
+        420px circle at var(--glare-x, 50%) var(--glare-y, 30%),
+        rgba(255, 255, 255, 0.11),
+        transparent 50%
+      );
+      opacity: var(--glare-opacity, 0);
+      transition: opacity 0.35s ease;
+    }
+
+    .cosmic-card:hover,
+    .cosmic-card.touch-active {
+      border-color: rgba(255, 255, 255, 0.45);
+      box-shadow: 0 0 38px rgba(255, 255, 255, 0.09), inset 0 0 22px rgba(255, 255, 255, 0.04);
+    }
+
+    .cosmic-card:hover::before,
+    .cosmic-card.touch-active::before {
+      opacity: 1;
+    }
+
+    /* Sci-Fi HUD Corner Reticles for Mobile & Desktop Cards */
+    .hud-frame {
+      position: relative;
+    }
+    .hud-corner-tl, .hud-corner-tr, .hud-corner-bl, .hud-corner-br {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      pointer-events: none;
+      border-color: rgba(255, 255, 255, 0.55);
+    }
+    .hud-corner-tl { top: -1px; left: -1px; border-top: 1.5px solid; border-left: 1.5px solid; border-top-left-radius: 4px; }
+    .hud-corner-tr { top: -1px; right: -1px; border-top: 1.5px solid; border-right: 1.5px solid; border-top-right-radius: 4px; }
+    .hud-corner-bl { bottom: -1px; left: -1px; border-bottom: 1.5px solid; border-left: 1.5px solid; border-bottom-left-radius: 4px; }
+    .hud-corner-br { bottom: -1px; right: -1px; border-bottom: 1.5px solid; border-right: 1.5px solid; border-bottom-right-radius: 4px; }
+
+    /* Orbital Rings */
+    @keyframes spinSlow {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    @keyframes spinReverse {
+      from { transform: translate(-50%, -50%) rotate(360deg); }
+      to { transform: translate(-50%, -50%) rotate(0deg); }
+    }
+
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+    }
+
+    @keyframes scanlinePulse {
+      0%, 100% { opacity: 0.15; transform: translateY(-100%); }
+      50% { opacity: 0.4; transform: translateY(100%); }
+    }
+
+    .orbit-ring-1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border: 1px dashed rgba(255, 255, 255, 0.18);
+      border-radius: 9999px;
+      animation: spinSlow 48s linear infinite;
+      pointer-events: none;
+    }
+
+    .orbit-ring-2 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 9999px;
+      animation: spinReverse 72s linear infinite;
+      pointer-events: none;
+    }
+
+    .float-slow {
+      animation: floatSlow 6s ease-in-out infinite;
+    }
+
+    /* Audio Equalizer Bars */
+    @keyframes eqBar1 {
+      0%, 100% { height: 4px; }
+      50% { height: 16px; }
+    }
+    @keyframes eqBar2 {
+      0%, 100% { height: 14px; }
+      35% { height: 5px; }
+      70% { height: 18px; }
+    }
+    @keyframes eqBar3 {
+      0%, 100% { height: 7px; }
+      45% { height: 19px; }
+    }
+    @keyframes eqBar4 {
+      0%, 100% { height: 12px; }
+      60% { height: 4px; }
+    }
+
+    .eq-active .bar-1 { animation: eqBar1 0.9s ease-in-out infinite; }
+    .eq-active .bar-2 { animation: eqBar2 0.75s ease-in-out infinite; }
+    .eq-active .bar-3 { animation: eqBar3 1.1s ease-in-out infinite; }
+    .eq-active .bar-4 { animation: eqBar4 0.85s ease-in-out infinite; }
+
+    /* Custom Range Input */
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      background: rgba(255, 255, 255, 0.22);
+      height: 4px;
+      border-radius: 2px;
+      outline: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #ffffff;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.95);
+    }
+
+    .text-glow {
+      text-shadow: 0 0 28px rgba(255, 255, 255, 0.48);
+    }
+
+    .btn-monochrome {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      transition: all 0.25s ease;
+    }
+
+    .btn-monochrome:hover,
+    .btn-monochrome:active {
+      background: #ffffff;
+      color: #000000;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.45);
+    }
+
+    .btn-monochrome-solid {
+      background: #ffffff;
+      color: #000000;
+      border: 1px solid #ffffff;
+      transition: all 0.25s ease;
+    }
+
+    .btn-monochrome-solid:hover,
+    .btn-monochrome-solid:active {
+      background: transparent;
+      color: #ffffff;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+    }
+
+    /* Desktop Custom Gravitational Cursor Halo */
+    @media (hover: hover) and (pointer: fine) {
+      .cursor-halo {
+        position: fixed;
+        width: 36px;
+        height: 36px;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 40;
+        transform: translate(-50%, -50%);
+        transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
+        mix-blend-mode: difference;
+      }
+    }
+  </style>
+</head>
+<body class="relative selection:bg-white selection:text-black pb-20 md:pb-0">
+
+  <!-- Background Gargantua Black Hole, Accretion Disk & Shooting Stars Canvas -->
+  <canvas id="cosmosCanvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
+
+  <!-- Subtle Radial Vignette Overlay -->
+  <div class="fixed inset-0 pointer-events-none z-0" style="background: radial-gradient(circle at 50% 35%, transparent 32%, rgba(0,0,0,0.72) 100%);"></div>
+
+  <!-- Desktop Gravitational Cursor Ring -->
+  <div id="cursorHalo" class="cursor-halo hidden lg:block"></div>
+
+  <!-- DESKTOP LEFT TELEMETRY HUD SIDEBAR (Exclusive Desktop Wide Cockpit) -->
+  <aside class="hidden xl:flex fixed left-5 top-1/2 -translate-y-1/2 z-20 flex-col gap-5 w-48 pointer-events-none select-none">
+    <div class="border-l border-white/25 pl-3.5 py-1 space-y-1">
+      <span class="font-mono-tech text-[9px] tracking-[0.28em] text-neutral-500 uppercase block">OBJEK GRAVITASI</span>
+      <span class="font-mono-tech text-xs text-white tracking-wider block">GARGANTUA // BH-0611</span>
+      <span id="hudSpinReadout" class="font-mono-tech text-[10px] text-neutral-400 block">PUTARAN: 0.998c RELATIVISTIK</span>
+    </div>
+
+    <div class="border-l border-white/25 pl-3.5 py-1 space-y-1">
+      <span class="font-mono-tech text-[9px] tracking-[0.28em] text-neutral-500 uppercase block">DILATASI WAKTU</span>
+      <span class="font-mono-tech text-xs text-white tracking-wider block">1 JAM = 7 TAHUN</span>
+      <span class="font-mono-tech text-[10px] text-neutral-400 block">GRAVITASI CINTA ABADI</span>
+    </div>
+
+    <div class="border-l border-white/25 pl-3.5 py-1 space-y-1">
+      <span class="font-mono-tech text-[9px] tracking-[0.28em] text-neutral-500 uppercase block">VEKTOR KURSOR OPTIK</span>
+      <span id="hudCursorCoords" class="font-mono-tech text-[11px] text-white block">RA 06h 11m // DEC +26°</span>
+      <span id="hudDeviceBadge" class="font-mono-tech text-[10px] text-neutral-400 block">MODE: DESKTOP INTERAKTIF</span>
+    </div>
+  </aside>
+
+  <!-- DESKTOP RIGHT BLACK HOLE INTERACTIVE CONTROLLER SIDEBAR -->
+  <aside class="hidden xl:flex fixed right-5 top-1/2 -translate-y-1/2 z-20 flex-col gap-4 w-52 cosmic-card rounded-2xl p-4 border border-white/20">
+    <div class="border-b border-white/10 pb-2">
+      <span class="font-mono-tech text-[9px] tracking-[0.24em] text-neutral-400 uppercase block">INTERSTELLAR CONTROL</span>
+      <span class="font-mono-tech text-xs text-white tracking-wider uppercase block mt-0.5">LENSA BLACK HOLE</span>
+    </div>
+
+    <div class="space-y-1.5">
+      <div class="flex justify-between font-mono-tech text-[10px]">
+        <span class="text-neutral-400">ROTASI CAKRAM</span>
+        <span id="bhSpeedLabel" class="text-white">1.0x</span>
+      </div>
+      <input id="bhSpeedSlider" type="range" min="2" max="30" value="10" class="w-full" aria-label="Kecepatan Putaran Black Hole" />
+    </div>
+
+    <div class="space-y-1.5">
+      <div class="flex justify-between font-mono-tech text-[10px]">
+        <span class="text-neutral-400">KEMIRINGAN ORBIT</span>
+        <span id="bhTiltLabel" class="text-white">16°</span>
+      </div>
+      <input id="bhTiltSlider" type="range" min="6" max="35" value="16" class="w-full" aria-label="Kemiringan Cakram Akresi" />
+    </div>
+
+    <button id="bhPulseBtnDesktop" class="btn-monochrome w-full py-2 rounded-lg font-mono-tech text-[10px] tracking-widest uppercase">
+      Gelombang Gravitasi
+    </button>
+  </aside>
+
+  <!-- MOBILE FLOATING BOTTOM NAVIGATION DOCK (Gives Mobile an Ultra-Sleek Spacecraft App Feel) -->
+  <nav aria-label="Navigasi Mobile" class="md:hidden fixed bottom-3 inset-x-3 z-40 cosmic-card rounded-2xl px-2 py-2 border border-white/25 shadow-[0_0_30px_rgba(0,0,0,0.9)] flex items-center justify-around">
+    <a href="#sec-countdown" class="mobile-nav-item flex flex-col items-center gap-1 px-2.5 py-1 rounded-xl text-white transition-colors">
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <circle cx="12" cy="12" r="9"></circle>
+        <polyline points="12 7 12 12 15 15"></polyline>
+      </svg>
+      <span class="font-mono-tech text-[9px] tracking-wider uppercase">Orbit</span>
+    </a>
+    <a href="#sec-constellation" class="mobile-nav-item flex flex-col items-center gap-1 px-2.5 py-1 rounded-xl text-neutral-400 hover:text-white transition-colors">
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"></polygon>
+      </svg>
+      <span class="font-mono-tech text-[9px] tracking-wider uppercase">Rasi</span>
+    </a>
+    <button id="mobileDockPulseBtn" class="btn-monochrome-solid px-3.5 py-2 rounded-xl font-mono-tech text-[9px] tracking-widest uppercase flex flex-col items-center gap-0.5 shadow-[0_0_18px_rgba(255,255,255,0.4)]">
+      <span>Lensa</span>
+      <span class="text-[8px] opacity-80">BH-0611</span>
+    </button>
+    <a href="#sec-lunar" class="mobile-nav-item flex flex-col items-center gap-1 px-2.5 py-1 rounded-xl text-neutral-400 hover:text-white transition-colors">
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+      <span class="font-mono-tech text-[9px] tracking-wider uppercase">Fase</span>
+    </a>
+    <a href="#sec-letter" class="mobile-nav-item flex flex-col items-center gap-1 px-2.5 py-1 rounded-xl text-neutral-400 hover:text-white transition-colors">
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+      </svg>
+      <span class="font-mono-tech text-[9px] tracking-wider uppercase">Surat</span>
+    </a>
+  </nav>
+
+  <!-- INTRO GATE OVERLAY (Triggers Web Audio, Gargantua Ignition & Shooting Star Burst) -->
+  <div id="introGate" class="fixed inset-0 z-50 bg-black flex flex-col items-center justify-center px-6 text-center transition-opacity duration-1000">
+    <!-- Mini Interstellar Gargantua Emblem on Intro Screen -->
+    <div class="relative w-64 h-64 sm:w-96 sm:h-96 flex items-center justify-center mb-6">
+      <div class="orbit-ring-1 w-56 h-56 sm:w-80 sm:h-80"></div>
+      <div class="orbit-ring-2 w-44 h-44 sm:w-64 sm:h-64"></div>
+      <!-- Glowing Lensing Halo + Accretion Disk Preview -->
+      <div class="relative w-28 h-28 sm:w-40 sm:h-40 rounded-full bg-black border border-white/80 shadow-[0_0_50px_rgba(255,255,255,0.65),inset_0_0_25px_rgba(255,255,255,0.4)] flex items-center justify-center">
+        <div class="w-44 sm:w-60 h-3 sm:h-4 rounded-full bg-gradient-to-r from-transparent via-white to-transparent opacity-90 rotate-[-14deg] shadow-[0_0_25px_#fff]"></div>
+        <div class="absolute w-20 h-20 sm:w-28 sm:h-28 rounded-full bg-black border border-white/60"></div>
+      </div>
+    </div>
+
+    <p class="font-mono-tech text-[10px] sm:text-xs tracking-[0.32em] text-neutral-400 uppercase mb-3">
+      HORIZON PERISTIWA // KOORDINAT 06.11.2026
+    </p>
+    <h1 class="font-serif-editorial text-3xl sm:text-6xl font-normal tracking-wide text-white text-glow max-w-xl mb-4 leading-tight">
+      Melintasi Ruang dan Waktu Menuju Hari Lahirmu
+    </h1>
+    <p class="text-xs sm:text-base text-neutral-400 max-w-md mb-8 font-light leading-relaxed">
+      Sebuah singularitas angkasa hitam-putih yang berputar menyambut hari ulang tahunmu pada <span id="gateDateLabel" class="text-white font-medium">6 November 2026</span>. Nyalakan suara untuk merasakan melodi ruang hampa.
+    </p>
+
+    <div class="flex flex-col sm:flex-row items-center gap-3.5 w-full max-w-xs sm:max-w-none justify-center">
+      <button id="enterWithAudioBtn" class="btn-monochrome-solid w-full sm:w-auto justify-center px-8 py-3.5 rounded-full font-mono-tech text-xs tracking-[0.18em] uppercase flex items-center gap-3">
+        <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+        </svg>
+        <span>Masuki Angkasa &amp; Putar Lagu</span>
+      </button>
+      <button id="enterSilentBtn" class="btn-monochrome w-full sm:w-auto px-6 py-3.5 rounded-full font-mono-tech text-xs tracking-[0.18em] uppercase text-neutral-300">
+        Masuk Tanpa Suara
+      </button>
+    </div>
+  </div>
+
+  <!-- TOP STICKY NAVIGATION & AUDIO / METEOR CONTROLLER -->
+  <header class="sticky top-0 z-30 backdrop-blur-md bg-black/70 border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-3.5 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-2">
+      <!-- Brand / Coordinates -->
+      <div class="flex items-center gap-2.5">
+        <div class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-white shadow-[0_0_10px_#fff] animate-pulse"></div>
+        <div>
+          <span class="font-mono-tech text-[11px] sm:text-xs tracking-[0.2em] uppercase text-white block">GARGANTUA // 06.11</span>
+          <span id="navRecipientLabel" class="font-mono-tech text-[9px] sm:text-[10px] tracking-widest text-neutral-400 block">UNTUK SEMESTAKU</span>
+        </div>
+      </div>
+
+      <!-- Section Navigation Links (Desktop/Tablet) -->
+      <nav class="hidden md:flex items-center gap-6 text-xs font-mono-tech tracking-widest uppercase text-neutral-400">
+        <a href="#sec-countdown" class="hover:text-white transition-colors">Waktu Orbit</a>
+        <a href="#sec-constellation" class="hover:text-white transition-colors">Rasi Bintang</a>
+        <a href="#sec-lunar" class="hover:text-white transition-colors">Fase Gravitasi</a>
+        <a href="#sec-letter" class="hover:text-white transition-colors">Surat Cosmic</a>
+        <a href="#sec-wishes" class="hover:text-white transition-colors">Hopes</a>
+      </nav>
+
+      <!-- Action Controls: Audio, Melody Selector, Meteor Shower -->
+      <div class="flex items-center gap-1.5 sm:gap-2.5">
+        <!-- Audio Toggle + Visualizer -->
+        <button id="audioToggleBtn" class="btn-monochrome px-2.5 sm:px-3 py-1.5 rounded-full flex items-center gap-1.5 sm:gap-2 text-xs font-mono-tech" title="Putar / Hentikan Lagu Mellow">
+          <div id="eqContainer" class="flex items-end gap-0.5 h-3.5 w-3.5">
+            <span class="bar-1 w-0.5 bg-current h-1 transition-all"></span>
+            <span class="bar-2 w-0.5 bg-current h-2 transition-all"></span>
+            <span class="bar-3 w-0.5 bg-current h-1.5 transition-all"></span>
+            <span class="bar-4 w-0.5 bg-current h-1 transition-all"></span>
+          </div>
+          <span id="audioStatusText" class="tracking-wider uppercase text-[10px] sm:text-[11px]">Lagu: Mati</span>
+        </button>
+
+        <!-- Melody Selector (Visible on all screens now, compact on mobile) -->
+        <select id="melodySelect" aria-label="Pilih Melodi Mellow" class="bg-neutral-950 border border-white/25 text-white text-[10px] sm:text-[11px] font-mono-tech rounded-full px-2 sm:px-2.5 py-1.5 focus:outline-none focus:border-white">
+          <option value="nocturne">Melodi 01: Nocturne</option>
+          <option value="lunar">Melodi 02: Bulan</option>
+          <option value="orbit">Melodi 03: Horizon</option>
+        </select>
+
+        <!-- Trigger Shooting Star Shower -->
+        <button id="meteorShowerBtn" class="btn-monochrome px-2.5 sm:px-3 py-1.5 rounded-full text-[10px] sm:text-[11px] font-mono-tech tracking-wider uppercase flex items-center gap-1.5" title="Panggil Hujan Bintang Jatuh">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M2 22 22 2"></path>
+            <path d="M17 2h5v5"></path>
+            <path d="M12 7 7 12"></path>
+          </svg>
+          <span class="hidden sm:inline">Bintang Jatuh</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="relative z-10 max-w-5xl mx-auto px-3.5 sm:px-6 pb-20">
+
+    <!-- HERO & LIVE COUNTDOWN SECTION -->
+    <section id="sec-countdown" class="min-h-[88vh] flex flex-col justify-center items-center text-center pt-4 pb-12 sm:py-20 relative">
+
+      <!-- MOBILE & TABLET DEDICATED INTERSTELLAR BLACK HOLE OBSERVATORY VIEWPORT
+           On mobile, this gives an unobstructed window directly onto the rotating Gargantua Black Hole
+           with touch-drag 3D tilt, telemetry HUD corners, and live coordinates! -->
+      <div class="w-full max-w-xl lg:hidden mb-4">
+        <div id="mobileBlackHoleStage" class="hud-frame relative w-full h-56 sm:h-64 rounded-2xl border border-white/15 bg-gradient-to-b from-white/[0.02] via-transparent to-black/50 overflow-hidden flex flex-col justify-between p-3.5 select-none touch-pan-y">
+          <span class="hud-corner-tl"></span>
+          <span class="hud-corner-tr"></span>
+          <span class="hud-corner-bl"></span>
+          <span class="hud-corner-br"></span>
+
+          <!-- Top HUD Telemetry Strip inside Mobile Viewport -->
+          <div class="flex items-center justify-between font-mono-tech text-[9px] tracking-[0.2em] text-neutral-300 uppercase">
+            <div class="flex items-center gap-1.5 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10">
+              <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+              <span>GARGANTUA // 0.998c</span>
+            </div>
+            <div id="mobileTouchCoords" class="bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10 text-white">
+              RA 06h 11m // DEC +16°
+            </div>
+          </div>
+
+          <!-- Center Unobstructed Window for Canvas Black Hole -->
+          <div class="pointer-events-none flex items-center justify-center">
+            <span class="font-mono-tech text-[8px] tracking-[0.35em] text-white/30 uppercase">
+              [ GESER JARI UNTUK MEMUTAR HORIZON ]
+            </span>
+          </div>
+
+          <!-- Bottom HUD Telemetry Strip inside Mobile Viewport -->
+          <div class="flex items-center justify-between font-mono-tech text-[9px] tracking-[0.16em] text-neutral-300 uppercase">
+            <span class="bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10">
+              DILATASI: 1 JAM = 7 TAHUN
+            </span>
+            <span id="mobileModeLabel" class="bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10 text-white">
+              SENTUH &amp; GESER AKTIF
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- MOBILE / TABLET INTERACTIVE BLACK HOLE COCKPIT CONSOLE (Brings Desktop's Right Sidebar to Mobile!) -->
+      <div id="mobileCockpitConsole" class="xl:hidden w-full max-w-xl cosmic-card hud-frame rounded-2xl p-3.5 sm:p-4 mb-6">
+        <span class="hud-corner-tl"></span>
+        <span class="hud-corner-tr"></span>
+        <span class="hud-corner-bl"></span>
+        <span class="hud-corner-br"></span>
+
+        <div class="flex items-center justify-between border-b border-white/10 pb-2.5 mb-3">
+          <div class="text-left">
+            <span class="font-mono-tech text-[9px] tracking-[0.22em] uppercase text-neutral-400 block">KONSOL TELEMETRI HORIZON</span>
+            <span class="font-mono-tech text-[11px] text-white tracking-wider uppercase">KENDALI LENSA BLACK HOLE</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <button id="bhPulseBtnMobile" class="btn-monochrome px-3 py-1.5 rounded-lg font-mono-tech text-[10px] tracking-wider uppercase">
+              Gelombang Gravitasi
+            </button>
+          </div>
+        </div>
+
+        <!-- Dual Sliders on Mobile just like Desktop HUD -->
+        <div class="grid grid-cols-2 gap-3 text-left">
+          <div class="bg-black/45 border border-white/10 rounded-xl p-2.5">
+            <div class="flex justify-between font-mono-tech text-[9px] mb-1.5">
+              <span class="text-neutral-400">ROTASI CAKRAM</span>
+              <span id="bhSpeedLabelMobile" class="text-white">1.0x</span>
+            </div>
+            <input id="bhSpeedSliderMobile" type="range" min="2" max="30" value="10" class="w-full" aria-label="Kecepatan Putaran Black Hole Mobile" />
+          </div>
+          <div class="bg-black/45 border border-white/10 rounded-xl p-2.5">
+            <div class="flex justify-between font-mono-tech text-[9px] mb-1.5">
+              <span class="text-neutral-400">MIRING ORBIT</span>
+              <span id="bhTiltLabelMobile" class="text-white">16°</span>
+            </div>
+            <input id="bhTiltSliderMobile" type="range" min="6" max="35" value="16" class="w-full" aria-label="Kemiringan Orbit Black Hole Mobile" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Target Date Badge -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/20 bg-black/65 backdrop-blur-md font-mono-tech text-[10px] sm:text-[11px] tracking-[0.22em] uppercase text-neutral-200 mb-4 sm:mb-6">
+        <span>SINGULARITAS WAKTU</span>
+        <span class="text-white/40">|</span>
+        <span id="heroTargetDateText">06 NOVEMBER 2026</span>
+      </div>
+
+      <h2 class="font-serif-editorial text-3xl sm:text-6xl md:text-7xl font-normal tracking-wide text-white text-glow max-w-4xl leading-[1.12] mb-4 sm:mb-6 px-1">
+        Selamat Menuju Hari Ulang Tahun, <span id="heroRecipientName" class="italic underline decoration-white/35 underline-offset-8">Semestaku</span>
+      </h2>
+
+      <p id="heroSubtitle" class="text-neutral-200 text-xs sm:text-lg max-w-2xl font-light leading-relaxed mb-7 sm:mb-10 bg-black/50 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-white/10">
+        Seperti cahaya yang melengkung mengelilingi horizon, setiap detik di semesta ini berputar menuju tanggal enam bulan depan—hari di mana kamu hadir menjadi pusat gravitasiku.
+      </p>
+
+      <!-- COUNTDOWN GRID (With HUD Reticles + Desktop & Mobile Touch 3D Tilt) -->
+      <div class="w-full max-w-3xl grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-5 mb-5 sm:mb-6">
+        <div class="cosmic-card tilt-card hud-frame rounded-2xl p-4 sm:p-7 flex flex-col items-center justify-center relative overflow-hidden">
+          <span class="hud-corner-tl"></span>
+          <span class="hud-corner-br"></span>
+          <span class="font-mono-tech text-[9px] sm:text-[10px] tracking-[0.22em] text-neutral-400 uppercase mb-1 sm:mb-2">ROTASI HARI</span>
+          <span id="cdDays" class="font-serif-editorial text-4xl sm:text-6xl font-semibold text-white text-glow tracking-tight">00</span>
+          <span class="font-mono-tech text-[11px] sm:text-xs text-neutral-400 mt-1">Hari</span>
+        </div>
+        <div class="cosmic-card tilt-card hud-frame rounded-2xl p-4 sm:p-7 flex flex-col items-center justify-center relative overflow-hidden">
+          <span class="hud-corner-tr"></span>
+          <span class="hud-corner-bl"></span>
+          <span class="font-mono-tech text-[9px] sm:text-[10px] tracking-[0.22em] text-neutral-400 uppercase mb-1 sm:mb-2">JAM KOSMIK</span>
+          <span id="cdHours" class="font-serif-editorial text-4xl sm:text-6xl font-semibold text-white text-glow tracking-tight">00</span>
+          <span class="font-mono-tech text-[11px] sm:text-xs text-neutral-400 mt-1">Jam</span>
+        </div>
+        <div class="cosmic-card tilt-card hud-frame rounded-2xl p-4 sm:p-7 flex flex-col items-center justify-center relative overflow-hidden">
+          <span class="hud-corner-tl"></span>
+          <span class="hud-corner-br"></span>
+          <span class="font-mono-tech text-[9px] sm:text-[10px] tracking-[0.22em] text-neutral-400 uppercase mb-1 sm:mb-2">MENIT ORBIT</span>
+          <span id="cdMinutes" class="font-serif-editorial text-4xl sm:text-6xl font-semibold text-white text-glow tracking-tight">00</span>
+          <span class="font-mono-tech text-[11px] sm:text-xs text-neutral-400 mt-1">Menit</span>
+        </div>
+        <div class="cosmic-card tilt-card hud-frame rounded-2xl p-4 sm:p-7 flex flex-col items-center justify-center relative overflow-hidden">
+          <span class="hud-corner-tr"></span>
+          <span class="hud-corner-bl"></span>
+          <span class="font-mono-tech text-[9px] sm:text-[10px] tracking-[0.22em] text-neutral-400 uppercase mb-1 sm:mb-2">DETIK CAHAYA</span>
+          <span id="cdSeconds" class="font-serif-editorial text-4xl sm:text-6xl font-semibold text-white text-glow tracking-tight">00</span>
+          <span class="font-mono-tech text-[11px] sm:text-xs text-neutral-400 mt-1">Detik</span>
+        </div>
+      </div>
+
+      <!-- Live Telemetry Progress Bar & Birthday Mode Preview Switch -->
+      <div class="w-full max-w-3xl cosmic-card tilt-card rounded-xl px-4 sm:px-5 py-3.5 sm:py-4 flex flex-col sm:flex-row items-center justify-between gap-3.5">
+        <div class="flex items-center gap-3 text-left w-full sm:w-auto">
+          <div class="w-2 h-2 rounded-full bg-white animate-ping shrink-0"></div>
+          <div>
+            <p id="countdownStatusLabel" class="font-mono-tech text-[11px] sm:text-xs text-white tracking-wider uppercase">
+              STATUS: MENGHITUNG MUNDUR MENUJU 6 NOVEMBER
+            </p>
+            <p id="interactionHintText" class="font-mono-tech text-[10px] sm:text-[11px] text-neutral-400 mt-0.5">
+              Gerakkan kursor atau sentuh layar untuk membelokkan cahaya gravitasi &amp; bintang jatuh.
+            </p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 shrink-0 w-full sm:w-auto justify-end">
+          <button id="toggleBirthdaySimBtn" class="btn-monochrome w-full sm:w-auto px-3.5 py-2 rounded-lg font-mono-tech text-[10px] sm:text-[11px] tracking-wider uppercase">
+            Simulasi Hari-H (06 Nov)
+          </button>
+        </div>
+      </div>
+
+      <!-- Birthday Unlocked Celebration Banner (Hidden until Nov 6 or Sim Mode) -->
+      <div id="birthdayCelebrationBanner" class="hidden w-full max-w-3xl mt-5 cosmic-card border-white/60 rounded-2xl p-5 sm:p-6 text-center bg-white/[0.07]">
+        <p class="font-mono-tech text-[10px] sm:text-xs tracking-[0.3em] uppercase text-neutral-300 mb-2">
+          HORIZON TERCAPAI // 06 NOVEMBER
+        </p>
+        <h3 class="font-serif-editorial text-2xl sm:text-4xl text-white text-glow mb-2">
+          Selamat Ulang Tahun, Cahaya Terang di Semestaku
+        </h3>
+        <p class="text-xs sm:text-sm text-neutral-200 max-w-xl mx-auto leading-relaxed">
+          Hari ini seluruh galaksi merayakan hari di mana kamu hadir ke dunia. Semoga setiap langkahmu selalu dinaungi ketenangan, kebahagiaan, dan cinta yang melampaui dimensi ruang dan waktu.
+        </p>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE CONSTELLATION MAP SECTION ("RASI BINTANG KITA") -->
+    <section id="sec-constellation" class="py-12 sm:py-20 border-t border-white/10">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-3">
+        <div>
+          <p class="font-mono-tech text-[10px] sm:text-xs tracking-[0.28em] text-neutral-400 uppercase mb-1.5">
+            PETA LANGIT // BAB 01
+          </p>
+          <h3 class="font-serif-editorial text-3xl sm:text-5xl text-white">
+            Rasi Bintang Tentang My Love
+          </h3>
+        </div>
+        <p class="text-xs sm:text-sm text-neutral-300 max-w-md font-light leading-relaxed">
+          Click setiap titik bintang utama pada peta langit untuk menghubungkan garis konstelasi and open some letters. Click ruang kosong pada peta untuk menanam bintang baru.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 items-stretch">
+        <!-- Interactive Star Map Canvas Container -->
+        <div class="lg:col-span-7 cosmic-card hud-frame rounded-2xl p-4 sm:p-6 flex flex-col justify-between relative overflow-hidden min-h-[340px] sm:min-h-[440px]">
+          <span class="hud-corner-tl"></span>
+          <span class="hud-corner-tr"></span>
+          <span class="hud-corner-bl"></span>
+          <span class="hud-corner-br"></span>
+
+          <div class="flex flex-wrap items-center justify-between z-10 mb-3 gap-2">
+            <span class="font-mono-tech text-[10px] sm:text-[11px] text-neutral-400 tracking-widest uppercase">
+              KONSTELASI: <span id="constellationProgressText" class="text-white">1 / 6 BINTANG TERHUBUNG</span>
+            </span>
+            <div class="flex items-center gap-2">
+              <button id="connectAllStarsBtn" class="btn-monochrome px-2.5 sm:px-3 py-1 rounded text-[10px] font-mono-tech uppercase tracking-wider">
+                Hubungkan Semua
+              </button>
+              <button id="resetStarsBtn" class="btn-monochrome px-2.5 sm:px-3 py-1 rounded text-[10px] font-mono-tech uppercase tracking-wider">
+                Reset Peta
+              </button>
+            </div>
+          </div>
+
+          <!-- Interactive Constellation Canvas -->
+          <div class="relative w-full h-64 sm:h-80 rounded-xl bg-black/75 border border-white/15 overflow-hidden cursor-crosshair">
+            <canvas id="constellationCanvas" class="w-full h-full block"></canvas>
+          </div>
+
+          <div class="flex items-center justify-between text-[10px] sm:text-[11px] font-mono-tech text-neutral-400 mt-3">
+            <span>KETUK BINTANG UNTUK MEMBACA PESAN</span>
+            <span id="customStarCounter">BINTANG TAMBAHAN: 0</span>
+          </div>
+        </div>
+
+        <!-- Star Detail Inspector Card -->
+        <div class="lg:col-span-5 cosmic-card tilt-card hud-frame rounded-2xl p-5 sm:p-8 flex flex-col justify-between">
+          <span class="hud-corner-tl"></span>
+          <span class="hud-corner-br"></span>
+
+          <div>
+            <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-5">
+              <div>
+                <span id="starCodeLabel" class="font-mono-tech text-[10px] sm:text-[11px] tracking-[0.25em] text-neutral-400 uppercase block">
+                  BINTANG ALPHA // 01
+                </span>
+                <h4 id="starTitleLabel" class="font-serif-editorial text-2xl sm:text-3xl text-white mt-1">
+                  Titik Gravitasi Pertama
+                </h4>
+              </div>
+              <div class="w-10 h-10 rounded-full border border-white/35 flex items-center justify-center font-mono-tech text-xs text-white shrink-0" id="starIndexBadge">
+                01
+              </div>
+            </div>
+
+            <p id="starDescriptionText" class="text-neutral-200 text-sm sm:text-base font-light leading-relaxed mb-6">
+              Seperti bintang pertama yang muncul saat senja berganti malam, your presence mengubah keheningan menjadi ruang yang  dan penuh arti. Terima kasih sudah menjadi tempat pulang paling tenang.
+            </p>
+
+            <div class="bg-white/[0.03] border border-white/10 rounded-xl p-3.5 sm:p-4 font-mono-tech text-[11px] sm:text-xs text-neutral-300 space-y-1.5">
+              <div class="flex justify-between">
+                <span class="text-neutral-500">MAGNITUDO CAHAYA:</span>
+                <span id="starMagnitudeText" class="text-white">Tak Terbatas</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-neutral-500">JARAK ORBIT:</span>
+                <span id="starDistanceText" class="text-white">Selalu Di Hati</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Star Selector Pills -->
+          <div class="mt-6 sm:mt-8 pt-4 border-t border-white/10">
+            <p class="font-mono-tech text-[10px] tracking-[0.2em] text-neutral-400 uppercase mb-3">
+              PILIH TITIK BINTANG SECARA LANGSUNG:
+            </p>
+            <div id="starButtonsContainer" class="grid grid-cols-3 gap-2">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE ORBITAL RESONANCE & ECLIPSE SLIDER ("FASE GRAVITASI") -->
+    <section id="sec-lunar" class="py-12 sm:py-20 border-t border-white/10">
+      <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+        <p class="font-mono-tech text-[10px] sm:text-xs tracking-[0.28em] text-neutral-400 uppercase mb-1.5">
+          SINKRONISASI DUA ORBIT // BAB 02
+        </p>
+        <h3 class="font-serif-editorial text-3xl sm:text-5xl text-white mb-2.5">
+          Fase Bulan &amp; Gravitasi Kita
+        </h3>
+        <p class="text-xs sm:text-sm text-neutral-300 font-light">
+          Geser kendali derajat orbit di bawah ini untuk melihat bagaimana bulan dan bayangan bergerak menuju penyatuan gerhana penuh pada hari ulang tahunmu.
+        </p>
+      </div>
+
+      <div class="cosmic-card tilt-card hud-frame rounded-3xl p-5 sm:p-10 max-w-4xl mx-auto">
+        <span class="hud-corner-tl"></span>
+        <span class="hud-corner-tr"></span>
+        <span class="hud-corner-bl"></span>
+        <span class="hud-corner-br"></span>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-center">
+          <!-- Interactive Monochrome Moon / Eclipse Visualizer -->
+          <div class="flex flex-col items-center justify-center py-4 sm:py-6 relative">
+            <div class="w-48 h-48 sm:w-64 sm:h-64 rounded-full border border-white/20 flex items-center justify-center relative bg-black overflow-hidden shadow-[0_0_50px_rgba(255,255,255,0.1)]">
+              <!-- Base Illuminated Moon -->
+              <div id="moonLitCircle" class="w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-white shadow-[0_0_40px_rgba(255,255,255,0.85)] relative transition-transform duration-150"></div>
+              <!-- Shadow Disc that shifts with slider -->
+              <div id="moonShadowDisc" class="w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-black absolute transition-all duration-150" style="transform: translateX(-28px);"></div>
+              <!-- Orbital Corona Ring -->
+              <div id="eclipseCorona" class="w-36 h-36 sm:w-44 sm:h-44 rounded-full border border-white/45 absolute opacity-30 transition-opacity duration-300 pointer-events-none"></div>
+            </div>
+            <span id="lunarPhaseName" class="font-mono-tech text-[11px] sm:text-xs tracking-[0.22em] text-white uppercase mt-4 sm:mt-5">
+              FASE: SABIT PERAK (120°)
+            </span>
+          </div>
+
+          <!-- Slider & Poetic Telemetry -->
+          <div class="space-y-5 sm:space-y-6">
+            <div class="space-y-2">
+              <div class="flex justify-between font-mono-tech text-xs">
+                <span class="text-neutral-400">SUDUT REVOLUSI</span>
+                <span id="orbitDegreeValue" class="text-white">120° / 360°</span>
+              </div>
+              <input id="orbitRangeSlider" type="range" min="0" max="360" value="120" class="w-full" aria-label="Pengatur Sudut Orbit" />
+              <div class="flex justify-between font-mono-tech text-[10px] text-neutral-500">
+                <span>0° (Awal Pertemuan)</span>
+                <span>180° (Purnama)</span>
+                <span>360° (06 Nov)</span>
+              </div>
+            </div>
+
+            <div class="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/15">
+              <p class="font-mono-tech text-[10px] tracking-[0.2em] text-neutral-400 uppercase mb-2" id="lunarQuotePhaseTag">
+                CATATAN FASE ORBIT
+              </p>
+              <p id="lunarQuoteText" class="font-serif-editorial italic text-xl sm:text-2xl text-white leading-relaxed">
+                "Bahkan ketika bulan hanya tampak separuh di langit malam, cahayanya tetap utuh menuntun langkahku menuju dirimu."
+              </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 font-mono-tech text-xs">
+              <div class="p-3 sm:p-3.5 rounded-xl border border-white/10 bg-black/50">
+                <span class="text-neutral-500 block text-[9px] sm:text-[10px]">RESONANSI GRAVITASI</span>
+                <span id="gravityResonanceVal" class="text-white text-xs sm:text-sm mt-0.5 block">94.8% Stabil</span>
+              </div>
+              <div class="p-3 sm:p-3.5 rounded-xl border border-white/10 bg-black/50">
+                <span class="text-neutral-500 block text-[9px] sm:text-[10px]">FREKUENSI CAHAYA</span>
+                <span id="lightFreqVal" class="text-white text-xs sm:text-sm mt-0.5 block">Monokrom Abadi</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COSMIC LOVE LETTER SECTION ("SURAT DARI ORBIT") -->
+    <section id="sec-letter" class="py-12 sm:py-20 border-t border-white/10">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-8 sm:mb-10">
+          <p class="font-mono-tech text-[10px] sm:text-xs tracking-[0.28em] text-neutral-400 uppercase mb-1.5">
+            PESAN TERENKRIPSI // BAB 03
+          </p>
+          <h3 class="font-serif-editorial text-3xl sm:text-5xl text-white">
+            Surat Untuk Hari Ulang Tahunmu
+          </h3>
+        </div>
+
+        <div class="cosmic-card tilt-card letter-card hud-frame rounded-3xl p-5 sm:p-12 relative overflow-hidden">
+          <span class="hud-corner-tl"></span>
+          <span class="hud-corner-tr"></span>
+          <span class="hud-corner-bl"></span>
+          <span class="hud-corner-br"></span>
+
+          <!-- Top Metadata Bar -->
+          <div class="flex flex-wrap items-center justify-between gap-2 pb-5 mb-6 sm:mb-8 border-b border-white/15 font-mono-tech text-[11px] sm:text-xs text-neutral-400">
+            <div>
+              <span>KEPADA: </span>
+              <span id="letterRecipientName" class="text-white uppercase">SEMESTAKU</span>
+            </div>
+            <div>
+              <span>TANGGAL TARGET: </span>
+              <span class="text-white">06.11.2026</span>
+            </div>
+          </div>
+
+          <!-- Typewriter / Full Letter Body -->
+          <div id="letterContentBox" class="font-serif-editorial text-lg sm:text-2xl text-neutral-100 leading-relaxed space-y-4 sm:space-y-5 min-h-[220px]">
+            <!-- Populated by JS -->
+          </div>
+
+          <!-- Signature & Controls -->
+          <div class="mt-8 sm:mt-10 pt-5 sm:pt-6 border-t border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <p class="font-mono-tech text-[10px] tracking-[0.2em] text-neutral-400 uppercase">DITULIS DARI DALAM HORIZON OLEH:</p>
+              <p id="letterSenderName" class="font-serif-editorial italic text-xl sm:text-2xl text-white mt-1">Seseorang yang Selalu Menyayangimu (siapa yaaa?)</p>
+            </div>
+
+            <div class="flex items-center gap-2.5">
+              <button id="replayTypewriterBtn" class="btn-monochrome flex-1 sm:flex-none px-4 py-2 rounded-full font-mono-tech text-[11px] sm:text-xs uppercase tracking-wider">
+                Ketik Ulang Surat
+              </button>
+              <button id="instantShowLetterBtn" class="btn-monochrome flex-1 sm:flex-none px-4 py-2 rounded-full font-mono-tech text-[11px] sm:text-xs uppercase tracking-wider">
+                Tampilkan Semua
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHOOTING STAR WISH LAUNCHER ("KAPSUL HARAPAN & BINTANG JATUH") -->
+    <section id="sec-wishes" class="py-12 sm:py-20 border-t border-white/10">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-8 sm:mb-10">
+          <p class="font-mono-tech text-[10px] sm:text-xs tracking-[0.28em] text-neutral-400 uppercase mb-1.5">
+            PELUNCUR HARAPAN // BAB 04
+          </p>
+          <h3 class="font-serif-editorial text-3xl sm:text-5xl text-white mb-2.5">
+            Titipkan Harapan pada Bintang Jatuh
+          </h3>
+          <p class="text-xs sm:text-sm text-neutral-300 max-w-xl mx-auto font-light">
+            Tuliskan doa atau harapan untuk usia barumu di tanggal 6 bulan depan. Saat kamu menekan tombol luncurkan, harapanmu akan melesat menjadi bintang jatuh melintasi cakram akresi black hole dan tersimpan di dalam kapsul orbit.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6">
+          <!-- Wish Form -->
+          <div class="md:col-span-5 cosmic-card tilt-card hud-frame rounded-2xl p-5 sm:p-6 flex flex-col justify-between">
+            <span class="hud-corner-tl"></span>
+            <span class="hud-corner-br"></span>
+
+            <div>
+              <label for="wishInput" class="block font-mono-tech text-xs tracking-wider uppercase text-neutral-300 mb-3">
+                TULIS HARAPAN ULANG TAHUNMU:
+              </label>
+              <textarea id="wishInput" rows="4" maxlength="180" placeholder="Semoga di usia yang baru pada 6 November nanti..." class="w-full rounded-xl bg-black/70 border border-white/20 p-3.5 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-white transition-colors resize-none"></textarea>
+              <p class="font-mono-tech text-[10px] text-neutral-500 mt-2 text-right">
+                <span id="wishCharCount">0</span> / 180 KARAKTER
+              </p>
+            </div>
+
+            <button id="launchWishBtn" class="btn-monochrome-solid w-full py-3 rounded-xl font-mono-tech text-xs tracking-[0.18em] uppercase mt-4">
+              Luncurkan ke Bintang Jatuh
+            </button>
+          </div>
+
+          <!-- Recorded Wishes Capsule Log -->
+          <div class="md:col-span-7 cosmic-card tilt-card hud-frame rounded-2xl p-5 sm:p-6 flex flex-col justify-between">
+            <span class="hud-corner-tr"></span>
+            <span class="hud-corner-bl"></span>
+
+            <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
+              <span class="font-mono-tech text-xs tracking-wider uppercase text-white">
+                LOG HARAPAN TERORBIT
+              </span>
+              <span id="wishCountBadge" class="font-mono-tech text-[11px] text-neutral-400">
+                3 HARAPAN TERSIMPAN
+              </span>
+            </div>
+
+            <div id="wishListContainer" class="space-y-3 max-h-64 overflow-y-auto pr-1">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="relative z-10 border-t border-white/10 py-10 mb-14 md:mb-0 text-center font-mono-tech text-xs text-neutral-500">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>GARGANTUA MONOKROM // TRANSMISI MENUJU 06.11.2026</p>
+      <div class="flex items-center gap-4">
+        <button id="footerMeteorBtn" class="text-neutral-300 hover:text-white underline underline-offset-4">
+          Panggil Hujan Bintang Jatuh
+        </button>
+        <span>|</span>
+        <button id="footerGravityPulseBtn" class="text-neutral-300 hover:text-white underline underline-offset-4">
+          Gelombang Gravitasi Black Hole
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="cosmicToast" class="fixed top-16 sm:top-auto sm:bottom-5 right-4 sm:right-5 z-50 cosmic-card px-4 py-2.5 rounded-xl border border-white/40 font-mono-tech text-[11px] text-white tracking-wider uppercase opacity-0 pointer-events-none transition-opacity duration-300">
+    TRANSMISI TERSIMPAN
+  </div>
+
+  <script>
+    (function () {
+      // ==========================================
+      // 1. STATE & DEFAULT CONFIGURATION
+      // ==========================================
+      const DEFAULT_CONFIG = {
+        recipientName: "Semestaku",
+        senderName: "Seseorang yang Selalu Menyayangimu",
+        targetDateISO: "2026-11-06",
+        letterParagraphs: [
+          "Menjelang tanggal enam bulan depan, i ingin menmberi sepotong ruang angkasa yang melampaui batas ruang dan waktu (bc im timeless yeah). Seperti cahaya abadi yang berputar mengelilingi horizon event di background, my love for you will never end with the gravity of time.",
+          "Selamat menyambut hari ulang tahunmu pada 6 November sayangggg. i hope that in the next year, you will always be surrounded by love, happiness, and success. May every wish you make come true, and may your journey through life be filled with joy and fulfillment.",
+          "i hope that this birthday will be a special and memorable one for you, and that you will continue to shine brightly like the stars in the night sky. Happy Birthday, my love!",
+          "With all my love and best wishes, i hope that this birthday will be the start of a new chapter in your life filled with happiness, love, and success. May all your dreams come true, and may you always be surrounded by the warmth of those who care for you.",
+          "i hope that this birthday will be a reminder of how much you are loved and appreciated, and that you will continue to grow and thrive in the years to come. Happy Birthday, my love! May this year be filled with endless possibilities and exciting adventures.",
+          "i hope that this birthday will be a time for you to reflect on all the wonderful memories of the past year and look forward to all the amazing experiences that lie ahead. May your birthday be filled with laughter, love, and joy, and may you always be surrounded by the people who make your life brighter and more meaningful",
+          "i hope that this birthday will be a time for you to celebrate all of your accomplishments and the amazing person that you are. May this year bring you new opportunities, exciting challenges, and endless happiness. Happy Birthday, my love!",
+          "i hope that this birthday will be a time for you to feel loved, appreciated, and cherished by all those around you. May your birthday be filled with laughter, love, and joy, and may you always be surrounded by the people who make your life brighter and more meaningful.",
+          "lastly, aku mau bilang kalo kehadiran mu di hidup ku merubah segalanya, dari dulu aku ga pernah percaya dengan orang malah jadi gini sekarang, aku juga ga pernah tau kalo ada orang yang bisa bikin aku ngerasa nyaman dan aman kayak gini.",
+          "terimah kasih udah jadi orang yang selalu ada buat aku, terimakasih udah jadi orang yang selalu bikin aku senyum, terimakasih udah jadi orang yang selalu bikin aku ngerasa nyaman dan aman, terimakasih udah jadi orang yang selalu bikin aku ngerasa dicintai.",
+          "aku ga tau harus bilang apa lagi, aku cuma mau bilang kalo aku sayang banget sama kamu, aku sayang banget sama kamu, aku sayang banget sama kamu, aku sayang banget sama kamu, aku sayang banget sama kamu, aku sayang banget sama kamu",
+          "Terima kasih telah hadir ke dunia dan menjadi pusat gravitasi di dalam hidupku. With you, every moment, every second is always a precious moment, every second that passes feels so valuable. dan aku berharap kita bisa terus bareng-bareng ngelewatin semua hal di masa depan.",
+          "Happy Birthday, my Love!"
+        ],
+        wishes: [
+          { text: "Semoga pada 6 November nanti, setiap doa baik yang kamu panjatkan segera menemukan jalannya.", time: "ORBIT // 01" },
+          { text: "Semoga langkah kita selalu seiring seperti cahaya yang setia mengelilingi cakram bintang.", time: "ORBIT // 02" },
+          { text: "Semoga kebahagiaan dan kesabaran selalu melekat di hari-harimu di usia yang baru.", time: "ORBIT // 03" },
+          { text: "Semoga aku dikasi bj terus di riding sampe kering", time: "ORBIT // 04" }
+        ]
+      };
+
+      let appConfig = JSON.parse(JSON.stringify(DEFAULT_CONFIG));
+
+      function saveState() {
+        // Kosongkan agar perubahan tidak disimpan ke cache browser
+      }
+
+      function saveState() {
+        try {
+          localStorage.setItem("cosmic_bday_0611_interstellar", JSON.stringify(appConfig));
+        } catch (e) {
+          // Ignore storage error
+        }
+      }
+
+      function showToast(msg) {
+        const toast = document.getElementById("cosmicToast");
+        if (!toast) return;
+        toast.textContent = msg;
+        toast.classList.remove("opacity-0");
+        toast.classList.add("opacity-100");
+        clearTimeout(window.__toastTimer);
+        window.__toastTimer = setTimeout(() => {
+          toast.classList.remove("opacity-100");
+          toast.classList.add("opacity-0");
+        }, 2600);
+      }
+
+      // ==========================================
+      // 2. DYNAMIC DESKTOP & MOBILE TOUCH / GYRO PARALLAX
+      // ==========================================
+      let isDesktopViewport = window.innerWidth >= 1024;
+      let pointerNormX = 0; // -1 to 1 (works for BOTH Desktop Mouse & Mobile Touch/Gyro)
+      let pointerNormY = 0; // -1 to 1
+      let smoothPointerX = 0;
+      let smoothPointerY = 0;
+
+      function updateDeviceModeUI() {
+        isDesktopViewport = window.innerWidth >= 1024;
+        const hint = document.getElementById("interactionHintText");
+        const mobileBadge = document.getElementById("mobileModeLabel");
+        const hudBadge = document.getElementById("hudDeviceBadge");
+
+        if (isDesktopViewport) {
+          if (hint) {
+            hint.textContent = "Mode Desktop Aktif: Coba gerakkan mouse untuk efek paralaks Black Hole & klik langit untuk bintang jatuh.";
+          }
+          if (hudBadge) {
+            hudBadge.textContent = "MODE: DESKTOP 3D PARALAKS";
+          }
+        } else {
+          if (hint) {
+            hint.textContent = "Mode Mobile Interaktif: Geser jendela Black Hole di atas atau ketuk langit untuk memanggil bintang jatuh.";
+          }
+          if (mobileBadge) {
+            mobileBadge.textContent = "SENTUH & GESER AKTIF";
+          }
+        }
+      }
+
+      function updateCoordinatesHUD(normX, normY) {
+        const raMin = Math.abs(Math.round(normX * 59)).toString().padStart(2, "0");
+        const decDeg = Math.round(normY * -45);
+        const sign = decDeg >= 0 ? "+" : "";
+        const text = `RA 06h ${raMin}m // DEC ${sign}${decDeg}°`;
+
+        const desktopCoords = document.getElementById("hudCursorCoords");
+        if (desktopCoords) desktopCoords.textContent = text;
+
+        const mobileCoords = document.getElementById("mobileTouchCoords");
+        if (mobileCoords) mobileCoords.textContent = text;
+      }
+
+      // Desktop & Mobile 3D Card Tilt + Glare Effect
+      function initInteractiveTiltCards() {
+        const cards = document.querySelectorAll(".tilt-card");
+        cards.forEach((card) => {
+          // Desktop mouse tilt
+          card.addEventListener("mousemove", (e) => {
+            if (window.innerWidth < 1024) return;
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const isLetterCard = card.classList.contains("letter-card");
+            const maxRotateX = isLetterCard
+              ? Math.atan(8 / centerY) * (180 / Math.PI)
+              : 4.2;
+            const maxRotateY = isLetterCard
+              ? Math.atan(8 / centerX) * (180 / Math.PI)
+              : 4.2;
+            const rotateX = ((y - centerY) / centerY) * -maxRotateX;
+            const rotateY = ((x - centerX) / centerX) * maxRotateY;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`;
+            card.style.setProperty("--glare-x", `${x}px`);
+            card.style.setProperty("--glare-y", `${y}px`);
+            card.style.setProperty("--glare-opacity", "1");
+          });
+
+          card.addEventListener("mouseleave", () => {
+            card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg)";
+            card.style.setProperty("--glare-opacity", "0");
+          });
+
+          // Mobile touch-reactive glare & subtle 3D response
+          card.addEventListener("touchstart", (e) => {
+            if (!e.touches || !e.touches[0]) return;
+            const rect = card.getBoundingClientRect();
+            const x = e.touches[0].clientX - rect.left;
+            const y = e.touches[0].clientY - rect.top;
+            card.classList.add("touch-active");
+            card.style.setProperty("--glare-x", `${x}px`);
+            card.style.setProperty("--glare-y", `${y}px`);
+            card.style.setProperty("--glare-opacity", "1");
+          }, { passive: true });
+
+          card.addEventListener("touchend", () => {
+            setTimeout(() => {
+              card.classList.remove("touch-active");
+              card.style.setProperty("--glare-opacity", "0");
+            }, 350);
+          }, { passive: true });
+        });
+      }
+
+      // Desktop mouse tracking
+      window.addEventListener("mousemove", (e) => {
+        pointerNormX = (e.clientX / Math.max(1, window.innerWidth) - 0.5) * 2;
+        pointerNormY = (e.clientY / Math.max(1, window.innerHeight) - 0.5) * 2;
+
+        const halo = document.getElementById("cursorHalo");
+        if (halo && window.innerWidth >= 1024) {
+          halo.style.left = `${e.clientX}px`;
+          halo.style.top = `${e.clientY}px`;
+        }
+        updateCoordinatesHUD(pointerNormX, pointerNormY);
+      });
+
+      // Mobile touch-drag tracking (especially inside #mobileBlackHoleStage and across screen)
+      window.addEventListener("touchmove", (e) => {
+        if (!e.touches || !e.touches[0]) return;
+        const t = e.touches[0];
+        pointerNormX = (t.clientX / Math.max(1, window.innerWidth) - 0.5) * 2;
+        pointerNormY = (t.clientY / Math.max(1, window.innerHeight) - 0.5) * 2;
+        updateCoordinatesHUD(pointerNormX, pointerNormY);
+      }, { passive: true });
+
+      // Mobile DeviceOrientation (Gyroscope) support if available
+      window.addEventListener("deviceorientation", (e) => {
+        if (window.innerWidth >= 1024) return;
+        if (typeof e.gamma === "number" && typeof e.beta === "number") {
+          pointerNormX = Math.max(-1, Math.min(1, e.gamma / 35));
+          pointerNormY = Math.max(-1, Math.min(1, (e.beta - 45) / 35));
+          updateCoordinatesHUD(pointerNormX, pointerNormY);
+        }
+      }, { passive: true });
+
+      // ==========================================
+      // 3. INTERSTELLAR "GARGANTUA" BLACK HOLE + SHOOTING STARS CANVAS
+      // ==========================================
+      const cosmosCanvas = document.getElementById("cosmosCanvas");
+      const ctx = cosmosCanvas.getContext("2d");
+      let cw = window.innerWidth;
+      let ch = window.innerHeight;
+
+      const backgroundStars = [];
+      const shootingStars = [];
+      const accretionParticles = [];
+      const gravityWaves = [];
+
+      let bhRotationSpeed = 1.0;
+      let bhDiskTiltDeg = 16;
+      let bhTime = 0;
+
+      function resizeCosmos() {
+        cw = window.innerWidth;
+        ch = window.innerHeight;
+        cosmosCanvas.width = cw;
+        cosmosCanvas.height = ch;
+        updateDeviceModeUI();
+      }
+
+      function initStarsAndAccretion() {
+        backgroundStars.length = 0;
+        const starCount = window.innerWidth >= 1024 ? 260 : 175;
+        for (let i = 0; i < starCount; i++) {
+          backgroundStars.push({
+            x: Math.random() * cw,
+            y: Math.random() * ch,
+            radius: Math.random() * 1.4 + 0.25,
+            alpha: Math.random() * 0.75 + 0.15,
+            twinkleSpeed: Math.random() * 0.018 + 0.004,
+            twinklePhase: Math.random() * Math.PI * 2
+          });
+        }
+
+        accretionParticles.length = 0;
+        const particleCount = window.innerWidth >= 1024 ? 420 : 280;
+        for (let i = 0; i < particleCount; i++) {
+          const rNorm = 1.08 + Math.pow(Math.random(), 1.55) * 2.15;
+          accretionParticles.push({
+            rNorm: rNorm,
+            angle: Math.random() * Math.PI * 2,
+            angularSpeed: (0.018 / Math.pow(rNorm, 1.35)) * (0.85 + Math.random() * 0.3),
+            size: Math.random() * 1.7 + 0.5,
+            baseAlpha: Math.random() * 0.68 + 0.25,
+            bandOffset: (Math.random() - 0.5) * 0.06
+          });
+        }
+      }
+
+      function triggerGravityWave() {
+        gravityWaves.push({
+          radiusMultiplier: 1.0,
+          alpha: 0.8
+        });
+      }
+
+      function spawnShootingStar(customStartX, customStartY) {
+        const startX = typeof customStartX === "number" ? customStartX : Math.random() * (cw * 0.85) + cw * 0.1;
+        const startY = typeof customStartY === "number" ? customStartY : Math.random() * (ch * 0.45);
+        const angle = (Math.PI / 4) + (Math.random() * 0.22 - 0.11);
+        const speed = Math.random() * 8.5 + 10;
+        shootingStars.push({
+          x: startX,
+          y: startY,
+          vx: -Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          length: Math.random() * 105 + 80,
+          life: 1.0,
+          decay: Math.random() * 0.014 + 0.01,
+          size: Math.random() * 1.6 + 1.05
+        });
+      }
+
+      function triggerMeteorShower(count) {
+        const total = count || 9;
+        for (let i = 0; i < total; i++) {
+          setTimeout(() => {
+            spawnShootingStar();
+          }, i * 175);
+        }
+      }
+
+      // Draw the giant Interstellar Gargantua Black Hole in monochrome
+      // Dynamically positioned & proportioned for BOTH Mobile Portrait Observatory & Desktop Wide Screen!
+      function drawGargantuaBlackHole() {
+        smoothPointerX += (pointerNormX - smoothPointerX) * 0.06;
+        smoothPointerY += (pointerNormY - smoothPointerY) * 0.06;
+
+        bhTime += 0.016 * bhRotationSpeed;
+
+        const parallaxX = smoothPointerX * (isDesktopViewport ? 28 : 14);
+        const parallaxY = smoothPointerY * (isDesktopViewport ? 18 : 10);
+
+        // On Mobile (<1024px), align Gargantua's center with the #mobileBlackHoleStage observatory window at top!
+        let baseCy = ch * 0.44;
+        if (!isDesktopViewport) {
+          const stageEl = document.getElementById("mobileBlackHoleStage");
+          if (stageEl) {
+            const rect = stageEl.getBoundingClientRect();
+            const stageCenterY = rect.top + rect.height * 0.5;
+            // Keep Gargantua anchored in the observatory window at top, and smoothly transition to upper-center as user scrolls down
+            if (stageCenterY > -120 && stageCenterY < ch * 0.85) {
+              baseCy = stageCenterY;
+            } else {
+              baseCy = ch * 0.28;
+            }
+          } else {
+            baseCy = ch * 0.26;
+          }
+        }
+
+        const cx = cw * 0.5 + parallaxX;
+        const cy = baseCy + parallaxY;
+
+        // Calculate radius so the entire Accretion Disk (approx 3.1x bhRadius) fits inside mobile portrait width without clipping!
+        const minDim = Math.min(cw, ch);
+        const bhRadius = isDesktopViewport
+          ? Math.max(95, Math.min(155, minDim * 0.165))
+          : Math.max(40, Math.min(72, cw * 0.135));
+
+        const dynamicTiltDeg = bhDiskTiltDeg + smoothPointerY * 5.0;
+        const tiltRatio = Math.max(0.1, Math.sin((dynamicTiltDeg * Math.PI) / 180));
+        const rollAngle = -0.19 + smoothPointerX * 0.07;
+
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(rollAngle);
+
+        // 1. OUTER AMBIENT GRAVITATIONAL GLOW
+        const ambientGrad = ctx.createRadialGradient(0, 0, bhRadius * 0.8, 0, 0, bhRadius * 3.6);
+        ambientGrad.addColorStop(0, "rgba(255, 255, 255, 0.25)");
+        ambientGrad.addColorStop(0.32, "rgba(255, 255, 255, 0.09)");
+        ambientGrad.addColorStop(0.65, "rgba(200, 200, 200, 0.025)");
+        ambientGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
+        ctx.fillStyle = ambientGrad;
+        ctx.beginPath();
+        ctx.arc(0, 0, bhRadius * 3.6, 0, Math.PI * 2);
+        ctx.fill();
+
+        // 2. GRAVITATIONAL LENSING UPPER & LOWER ARCHES (Light bent from behind Gargantua)
+        for (let layer = 0; layer < 4; layer++) {
+          const rArchX = bhRadius * (1.16 + layer * 0.09);
+          const rArchY = bhRadius * (0.98 + layer * 0.06);
+          ctx.beginPath();
+          ctx.ellipse(0, -bhRadius * 0.04, rArchX, rArchY, 0, Math.PI * 1.06, Math.PI * 1.94);
+          ctx.strokeStyle = `rgba(255, 255, 255, ${(0.38 - layer * 0.075).toFixed(3)})`;
+          ctx.lineWidth = bhRadius * (0.095 - layer * 0.015);
+          ctx.lineCap = "round";
+          ctx.stroke();
+        }
+
+        for (let layer = 0; layer < 3; layer++) {
+          const rArchX = bhRadius * (1.12 + layer * 0.08);
+          const rArchY = bhRadius * (0.95 + layer * 0.055);
+          ctx.beginPath();
+          ctx.ellipse(0, bhRadius * 0.04, rArchX, rArchY, 0, Math.PI * 0.08, Math.PI * 0.92);
+          ctx.strokeStyle = `rgba(255, 255, 255, ${(0.25 - layer * 0.065).toFixed(3)})`;
+          ctx.lineWidth = bhRadius * (0.08 - layer * 0.015);
+          ctx.lineCap = "round";
+          ctx.stroke();
+        }
+
+        // 3. BACK HALF OF SWIRLING ACCRETION DISK
+        for (let b = 0; b < 9; b++) {
+          const bandRadius = bhRadius * (1.16 + b * 0.19);
+          const pulse = 0.85 + 0.15 * Math.sin(bhTime * 2 + b);
+          ctx.beginPath();
+          ctx.ellipse(0, 0, bandRadius, bandRadius * tiltRatio, 0, Math.PI, Math.PI * 2);
+          ctx.strokeStyle = `rgba(255, 255, 255, ${((0.28 - b * 0.025) * pulse).toFixed(3)})`;
+          ctx.lineWidth = bhRadius * 0.08;
+          ctx.stroke();
+        }
+
+        for (let i = 0; i < accretionParticles.length; i++) {
+          const p = accretionParticles[i];
+          p.angle = (p.angle + p.angularSpeed * bhRotationSpeed) % (Math.PI * 2);
+          if (Math.sin(p.angle) >= 0) continue;
+
+          const rx = p.rNorm * bhRadius;
+          const ry = rx * (tiltRatio + p.bandOffset);
+          const px = Math.cos(p.angle) * rx;
+          const py = Math.sin(p.angle) * ry;
+
+          const doppler = 0.72 - 0.28 * Math.cos(p.angle);
+          const alpha = Math.min(1, p.baseAlpha * doppler);
+
+          ctx.beginPath();
+          ctx.arc(px, py, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${alpha.toFixed(3)})`;
+          ctx.fill();
+        }
+
+        // 4. EVENT HORIZON (Pitch-Black Singularity Sphere) & RAZOR-SHARP PHOTON RING
+        ctx.beginPath();
+        ctx.arc(0, 0, bhRadius, 0, Math.PI * 2);
+        ctx.fillStyle = "#000000";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(0, 0, bhRadius * 1.018, 0, Math.PI * 2);
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.92)";
+        ctx.lineWidth = isDesktopViewport ? 2.2 : 1.8;
+        ctx.shadowColor = "#ffffff";
+        ctx.shadowBlur = 16;
+        ctx.stroke();
+        ctx.shadowBlur = 0;
+
+        // 5. FRONT HALF OF ACCRETION DISK
+        for (let b = 0; b < 10; b++) {
+          const bandRadius = bhRadius * (1.14 + b * 0.185);
+          const alpha = Math.max(0.03, 0.45 - b * 0.038);
+          ctx.beginPath();
+          ctx.ellipse(0, 0, bandRadius, bandRadius * tiltRatio, 0, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(255, 255, 255, ${(alpha * 0.35).toFixed(3)})`;
+          ctx.lineWidth = bhRadius * 0.045;
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.ellipse(0, 0, bandRadius, bandRadius * tiltRatio, 0, 0.02, Math.PI - 0.02);
+          ctx.strokeStyle = `rgba(255, 255, 255, ${alpha.toFixed(3)})`;
+          ctx.lineWidth = bhRadius * (b < 3 ? 0.068 : 0.042);
+          ctx.stroke();
+        }
+
+        // Intense white core filament crossing the front equator
+        ctx.beginPath();
+        ctx.ellipse(0, 0, bhRadius * 1.32, bhRadius * 1.32 * tiltRatio, 0, 0.04, Math.PI - 0.04);
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.95)";
+        ctx.lineWidth = isDesktopViewport ? 2.6 : 2.0;
+        ctx.shadowColor = "#ffffff";
+        ctx.shadowBlur = 20;
+        ctx.stroke();
+        ctx.shadowBlur = 0;
+
+        for (let i = 0; i < accretionParticles.length; i++) {
+          const p = accretionParticles[i];
+          if (Math.sin(p.angle) < 0) continue;
+
+          const rx = p.rNorm * bhRadius;
+          const ry = rx * (tiltRatio + p.bandOffset);
+          const px = Math.cos(p.angle) * rx;
+          const py = Math.sin(p.angle) * ry;
+
+          const prevAngle = p.angle - p.angularSpeed * bhRotationSpeed * 3.8;
+          const tx = Math.cos(prevAngle) * rx;
+          const ty = Math.sin(prevAngle) * ry;
+
+          const doppler = 0.78 - 0.32 * Math.cos(p.angle);
+          const alpha = Math.min(1, p.baseAlpha * doppler * 1.2);
+
+          ctx.beginPath();
+          ctx.moveTo(tx, ty);
+          ctx.lineTo(px, py);
+          ctx.strokeStyle = `rgba(255, 255, 255, ${alpha.toFixed(3)})`;
+          ctx.lineWidth = p.size;
+          ctx.lineCap = "round";
+          ctx.stroke();
+        }
+
+        // 6. GRAVITATIONAL WAVE RIPPLES
+        for (let w = gravityWaves.length - 1; w >= 0; w--) {
+          const gw = gravityWaves[w];
+          gw.radiusMultiplier += 0.045;
+          gw.alpha -= 0.012;
+          if (gw.alpha <= 0) {
+            gravityWaves.splice(w, 1);
+            continue;
+          }
+          ctx.beginPath();
+          ctx.ellipse(
+            0,
+            0,
+            bhRadius * gw.radiusMultiplier * 1.4,
+            bhRadius * gw.radiusMultiplier * 0.85,
+            0,
+            0,
+            Math.PI * 2
+          );
+          ctx.strokeStyle = `rgba(255, 255, 255, ${gw.alpha.toFixed(3)})`;
+          ctx.lineWidth = 2;
+          ctx.stroke();
+        }
+
+        ctx.restore();
+      }
+
+      function renderCosmos() {
+        ctx.clearRect(0, 0, cw, ch);
+
+        for (let i = 0; i < backgroundStars.length; i++) {
+          const s = backgroundStars[i];
+          s.twinklePhase += s.twinkleSpeed;
+          const curAlpha = s.alpha * (0.55 + 0.45 * Math.sin(s.twinklePhase));
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${curAlpha.toFixed(3)})`;
+          ctx.fill();
+        }
+
+        drawGargantuaBlackHole();
+
+        if (Math.random() < 0.028 && shootingStars.length < 5) {
+          spawnShootingStar();
+        }
+
+        for (let i = shootingStars.length - 1; i >= 0; i--) {
+          const m = shootingStars[i];
+          m.x += m.vx;
+          m.y += m.vy;
+          m.life -= m.decay;
+
+          if (m.life <= 0 || m.x < -200 || m.y > ch + 200) {
+            shootingStars.splice(i, 1);
+            continue;
+          }
+
+          const tailX = m.x - (m.vx / Math.hypot(m.vx, m.vy)) * m.length;
+          const tailY = m.y - (m.vy / Math.hypot(m.vx, m.vy)) * m.length;
+
+          const trailGrad = ctx.createLinearGradient(m.x, m.y, tailX, tailY);
+          trailGrad.addColorStop(0, `rgba(255, 255, 255, ${m.life})`);
+          trailGrad.addColorStop(0.3, `rgba(220, 220, 220, ${m.life * 0.55})`);
+          trailGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
+
+          ctx.beginPath();
+          ctx.moveTo(m.x, m.y);
+          ctx.lineTo(tailX, tailY);
+          ctx.strokeStyle = trailGrad;
+          ctx.lineWidth = m.size;
+          ctx.lineCap = "round";
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.arc(m.x, m.y, m.size * 1.3, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${m.life})`;
+          ctx.fill();
+        }
+
+        requestAnimationFrame(renderCosmos);
+      }
+
+      window.addEventListener("resize", () => {
+        resizeCosmos();
+        initStarsAndAccretion();
+        resizeConstellationCanvas();
+      });
+
+      window.addEventListener("click", (e) => {
+        const tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : "";
+        if (["button", "input", "textarea", "select", "a", "canvas"].includes(tag)) return;
+        spawnShootingStar(e.clientX + 50, Math.max(20, e.clientY - 50));
+      });
+
+      // Synchronized Desktop & Mobile Black Hole Speed & Tilt Sliders
+      const bhSpeedSlider = document.getElementById("bhSpeedSlider");
+      const bhSpeedSliderMobile = document.getElementById("bhSpeedSliderMobile");
+      function setBlackHoleSpeed(val) {
+        bhRotationSpeed = parseInt(val, 10) / 10;
+        const text = `${bhRotationSpeed.toFixed(1)}x`;
+        const lblD = document.getElementById("bhSpeedLabel");
+        const lblM = document.getElementById("bhSpeedLabelMobile");
+        if (lblD) lblD.textContent = text;
+        if (lblM) lblM.textContent = text;
+        if (bhSpeedSlider) bhSpeedSlider.value = val;
+        if (bhSpeedSliderMobile) bhSpeedSliderMobile.value = val;
+      }
+      if (bhSpeedSlider) bhSpeedSlider.addEventListener("input", (e) => setBlackHoleSpeed(e.target.value));
+      if (bhSpeedSliderMobile) bhSpeedSliderMobile.addEventListener("input", (e) => setBlackHoleSpeed(e.target.value));
+
+      const bhTiltSlider = document.getElementById("bhTiltSlider");
+      const bhTiltSliderMobile = document.getElementById("bhTiltSliderMobile");
+      function setBlackHoleTilt(val) {
+        bhDiskTiltDeg = parseInt(val, 10);
+        const text = `${bhDiskTiltDeg}°`;
+        const lblD = document.getElementById("bhTiltLabel");
+        const lblM = document.getElementById("bhTiltLabelMobile");
+        if (lblD) lblD.textContent = text;
+        if (lblM) lblM.textContent = text;
+        if (bhTiltSlider) bhTiltSlider.value = val;
+        if (bhTiltSliderMobile) bhTiltSliderMobile.value = val;
+      }
+      if (bhTiltSlider) bhTiltSlider.addEventListener("input", (e) => setBlackHoleTilt(e.target.value));
+      if (bhTiltSliderMobile) bhTiltSliderMobile.addEventListener("input", (e) => setBlackHoleTilt(e.target.value));
+
+      function handleGravityPulseAction() {
+        triggerGravityWave();
+        triggerMeteorShower(8);
+        playStarChime(0.85);
+        showToast("GELOMBANG GRAVITASI GARGANTUA DIPANCARKAN");
+      }
+
+      const bhPulseDesktop = document.getElementById("bhPulseBtnDesktop");
+      if (bhPulseDesktop) bhPulseDesktop.addEventListener("click", handleGravityPulseAction);
+
+      const bhPulseMobile = document.getElementById("bhPulseBtnMobile");
+      if (bhPulseMobile) bhPulseMobile.addEventListener("click", handleGravityPulseAction);
+
+      const mobileDockPulseBtn = document.getElementById("mobileDockPulseBtn");
+      if (mobileDockPulseBtn) {
+        mobileDockPulseBtn.addEventListener("click", () => {
+          handleGravityPulseAction();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      }
+
+      const footerGravityBtn = document.getElementById("footerGravityPulseBtn");
+      if (footerGravityBtn) footerGravityBtn.addEventListener("click", handleGravityPulseAction);
+
+      // ==========================================
+      // 4. MELLOW WEB AUDIO SYNTHESIZER BACKSOUND
+      // ==========================================
+      let audioCtx = null;
+      let isPlayingAudio = false;
+      let melodyTimer = null;
+      let currentMelodyKey = "nocturne";
+      let stepIndex = 0;
+
+      const MELODIES = {
+        nocturne: {
+          tempoMs: 1450,
+          notes: [
+            { bass: 130.81, chord: [261.63, 329.63, 392.00], lead: 523.25 },
+            { bass: 130.81, chord: [261.63, 329.63, 493.88], lead: 659.25 },
+            { bass: 110.00, chord: [220.00, 261.63, 329.63], lead: 587.33 },
+            { bass: 110.00, chord: [220.00, 261.63, 392.00], lead: 523.25 },
+            { bass: 87.31,  chord: [174.61, 220.00, 261.63], lead: 440.00 },
+            { bass: 87.31,  chord: [174.61, 220.00, 329.63], lead: 392.00 },
+            { bass: 98.00,  chord: [196.00, 246.94, 293.66], lead: 493.88 },
+            { bass: 98.00,  chord: [196.00, 246.94, 329.63], lead: 587.33 }
+          ]
+        },
+        lunar: {
+          tempoMs: 1650,
+          notes: [
+            { bass: 146.83, chord: [293.66, 349.23, 440.00], lead: 587.33 },
+            { bass: 196.00, chord: [246.94, 293.66, 440.00], lead: 523.25 },
+            { bass: 130.81, chord: [261.63, 329.63, 493.88], lead: 659.25 },
+            { bass: 110.00, chord: [220.00, 261.63, 329.63], lead: 493.88 },
+            { bass: 146.83, chord: [293.66, 349.23, 440.00], lead: 698.46 },
+            { bass: 98.00,  chord: [196.00, 246.94, 349.23], lead: 659.25 },
+            { bass: 130.81, chord: [261.63, 329.63, 392.00], lead: 523.25 },
+            { bass: 130.81, chord: [261.63, 329.63, 493.88], lead: 493.88 }
+          ]
+        },
+        orbit: {
+          tempoMs: 1350,
+          notes: [
+            { bass: 174.61, chord: [261.63, 349.23, 440.00], lead: 659.25 },
+            { bass: 196.00, chord: [293.66, 392.00, 493.88], lead: 587.33 },
+            { bass: 164.81, chord: [246.94, 329.63, 392.00], lead: 523.25 },
+            { bass: 220.00, chord: [261.63, 329.63, 440.00], lead: 659.25 },
+            { bass: 146.83, chord: [261.63, 349.23, 440.00], lead: 587.33 },
+            { bass: 196.00, chord: [246.94, 329.63, 392.00], lead: 493.88 },
+            { bass: 130.81, chord: [261.63, 329.63, 392.00], lead: 523.25 },
+            { bass: 130.81, chord: [261.63, 329.63, 493.88], lead: 783.99 }
+          ]
+        }
+      };
+
+      function ensureAudioContext() {
+        if (!audioCtx) {
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (AudioContextClass) {
+            audioCtx = new AudioContextClass();
+          }
+        }
+        if (audioCtx && audioCtx.state === "suspended") {
+          audioCtx.resume();
+        }
+      }
+
+      function playWarmNote(freq, durationSec, gainLevel, delaySec, waveType) {
+        if (!audioCtx) return;
+        const now = audioCtx.currentTime + (delaySec || 0);
+        const osc = audioCtx.createOscillator();
+        const subOsc = audioCtx.createOscillator();
+        const filter = audioCtx.createBiquadFilter();
+        const gain = audioCtx.createGain();
+
+        osc.type = waveType || "sine";
+        osc.frequency.setValueAtTime(freq, now);
+
+        subOsc.type = "triangle";
+        subOsc.frequency.setValueAtTime(freq, now);
+        subOsc.detune.setValueAtTime(4, now);
+
+        filter.type = "lowpass";
+        filter.frequency.setValueAtTime(freq * 3.2, now);
+        filter.frequency.exponentialRampToValueAtTime(Math.max(180, freq * 1.1), now + durationSec);
+
+        gain.gain.setValueAtTime(0.0001, now);
+        gain.gain.linearRampToValueAtTime(gainLevel, now + 0.14);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + durationSec);
+
+        osc.connect(filter);
+        subOsc.connect(filter);
+        filter.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.start(now);
+        subOsc.start(now);
+        osc.stop(now + durationSec + 0.05);
+        subOsc.stop(now + durationSec + 0.05);
+      }
+
+      function playStarChime(pitchMultiplier) {
+        if (!audioCtx || !isPlayingAudio) return;
+        const base = 523.25 * (pitchMultiplier || 1);
+        playWarmNote(base, 1.8, 0.045, 0, "sine");
+        playWarmNote(base * 1.5, 2.1, 0.025, 0.08, "sine");
+      }
+
+      function scheduleNextMelodyBar() {
+        if (!isPlayingAudio || !audioCtx) return;
+        const pack = MELODIES[currentMelodyKey] || MELODIES.nocturne;
+        const bar = pack.notes[stepIndex % pack.notes.length];
+        stepIndex++;
+
+        playWarmNote(bar.bass, 2.8, 0.055, 0, "sine");
+
+        bar.chord.forEach((cFreq, idx) => {
+          playWarmNote(cFreq, 2.4, 0.032, idx * 0.22, "sine");
+        });
+
+        playWarmNote(bar.lead, 2.1, 0.042, 0.45, "sine");
+
+        melodyTimer = setTimeout(scheduleNextMelodyBar, pack.tempoMs);
+      }
+
+      function startMellowMusic() {
+        ensureAudioContext();
+        if (!audioCtx) return;
+        if (isPlayingAudio) return;
+        isPlayingAudio = true;
+        updateAudioUI();
+        scheduleNextMelodyBar();
+      }
+
+      function stopMellowMusic() {
+        isPlayingAudio = false;
+        if (melodyTimer) {
+          clearTimeout(melodyTimer);
+          melodyTimer = null;
+        }
+        updateAudioUI();
+      }
+
+      function updateAudioUI() {
+        const eq = document.getElementById("eqContainer");
+        const statusText = document.getElementById("audioStatusText");
+        if (isPlayingAudio) {
+          eq.classList.add("eq-active");
+          statusText.textContent = "Lagu: Aktif";
+        } else {
+          eq.classList.remove("eq-active");
+          statusText.textContent = "Lagu: Mati";
+        }
+      }
+
+      // ==========================================
+      // 5. LIVE COUNTDOWN TIMER TO NOV 6
+      // ==========================================
+      let simulateBirthdayDay = false;
+
+      function formatIndonesianDate(isoStr) {
+        const parts = (isoStr || "2026-11-06").split("-");
+        if (parts.length !== 3) return "6 NOVEMBER 2026";
+        const months = [
+          "JANUARI", "FEBRUARI", "MARET", "APRIL", "MEI", "JUNI",
+          "JULI", "AGUSTUS", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DESEMBER"
+        ];
+        const y = parts[0];
+        const mIdx = parseInt(parts[1], 10) - 1;
+        const d = parseInt(parts[2], 10);
+        return `${d} ${months[mIdx] || "NOVEMBER"} ${y}`;
+      }
+
+      function updateCountdown() {
+        const targetISO = appConfig.targetDateISO || "2026-11-06";
+        const targetDate = new Date(`${targetISO}T00:00:00+07:00`);
+        const now = new Date();
+        let diff = targetDate.getTime() - now.getTime();
+
+        const banner = document.getElementById("birthdayCelebrationBanner");
+        const statusLabel = document.getElementById("countdownStatusLabel");
+
+        if (simulateBirthdayDay || diff <= 0) {
+          document.getElementById("cdDays").textContent = "00";
+          document.getElementById("cdHours").textContent = "00";
+          document.getElementById("cdMinutes").textContent = "00";
+          document.getElementById("cdSeconds").textContent = "00";
+          banner.classList.remove("hidden");
+          statusLabel.textContent = "STATUS: HARI ULANG TAHUN TELAH TIBA // SELAMAT ULANG TAHUN";
+          return;
+        }
+
+        banner.classList.add("hidden");
+        statusLabel.textContent = `STATUS: MENGHITUNG MUNDUR MENUJU ${formatIndonesianDate(targetISO)}`;
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / 1000 / 60) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+
+        document.getElementById("cdDays").textContent = String(days).padStart(2, "0");
+        document.getElementById("cdHours").textContent = String(hours).padStart(2, "0");
+        document.getElementById("cdMinutes").textContent = String(minutes).padStart(2, "0");
+        document.getElementById("cdSeconds").textContent = String(seconds).padStart(2, "0");
+      }
+
+      // ==========================================
+      // 6. INTERACTIVE CONSTELLATION MAP
+      // ==========================================
+      const CONSTELLATION_STARS = [
+        {
+          id: 1,
+          code: "BINTANG ALPHA // 01",
+          title: "Titik Gravitasi Pertama",
+          xRatio: 0.16,
+          yRatio: 0.65,
+          magnitude: "Tak Terbatas",
+          distance: "Selalu Di Hati",
+          desc: "Seperti bintang pertama yang muncul saat sore berganti malam, your presence mengubah keheningan hidup ku menjadi ruang yang warm dan penuh arti. Terima kasih sudah menjadi tempat pulang paling tenang."
+        },
+        {
+          id: 2,
+          code: "BINTANG BETA // 02",
+          title: "Penuntun di Tengah Gelap",
+          xRatio: 0.31,
+          yRatio: 0.32,
+          magnitude: "-4.8 Visual",
+          distance: "0.0 Tahun Cahaya",
+          desc: "Saat hari-hari terasa berat dan arah terasa kabur, senyummu selalu menjadi kompas yang mengembalikanku pada ketenangan."
+        },
+        {
+          id: 3,
+          code: "BINTANG GAMMA // 03",
+          title: "Frekuensi yang Seirama",
+          xRatio: 0.48,
+          yRatio: 0.54,
+          magnitude: "Harmoni Penuh",
+          distance: "Satu Garis Orbit",
+          desc: "With you, bahkan hari-hari biasa bisa menjadi hal yang menarik seperti melodi indah. You understand hal-hal yang bahkan belum sempat aku bilang."
+        },
+        {
+          id: 4,
+          code: "BINTANG DELTA // 04",
+          title: "Ketabahan dan Kelembutan",
+          xRatio: 0.64,
+          yRatio: 0.24,
+          magnitude: "Cahaya Perak",
+          distance: "Abadi",
+          desc: "i selalu mengagumi cara kau melewati setiap rintangan dan masalah dengan sabar dan masi bertahan. Di tanggal 6 bulan depan, i berharap kamu akan bisa menghadapi masalah yang akan datang."
+        },
+        {
+          id: 5,
+          code: "BINTANG EPSILON // 05",
+          title: "Semesta Kecil Kita",
+          xRatio: 0.78,
+          yRatio: 0.62,
+          magnitude: "Supernova",
+          distance: "Dekat Tak Terpisahkan",
+          desc: "Setiap tawa, cerita larut malam, dan perjalanan yang kita lalui adalah galaksi kecil yang mungkin tidak akan pernah ingin ku tukar dengan apa pun, kecuali bj dari mu."
+        },
+        {
+          id: 6,
+          code: "BINTANG ZETA // 06",
+          title: "Harapan 6 November",
+          xRatio: 0.89,
+          yRatio: 0.36,
+          magnitude: "Puncak Orbit",
+          distance: "06.11.2026",
+          desc: "Last but not least, Bintang keenam ini melambangkan tanggal lahirmu. Semoga tahun yang baru membawa semiliar kebahagiaan baru, dan izinkan aku terus menemanimu di setiap putaran orbit berikutnya yaaa sayang."
+        }
+      ];
+
+      let unlockedStarIds = [1];
+      let activeStarId = 1;
+      let customPlantedStars = [];
+
+      const constCanvas = document.getElementById("constellationCanvas");
+      const constCtx = constCanvas.getContext("2d");
+
+      function resizeConstellationCanvas() {
+        if (!constCanvas) return;
+        const rect = constCanvas.parentElement.getBoundingClientRect();
+        constCanvas.width = rect.width;
+        constCanvas.height = rect.height;
+      }
+
+      function selectConstellationStar(starId) {
+        const star = CONSTELLATION_STARS.find((s) => s.id === starId);
+        if (!star) return;
+        activeStarId = starId;
+        if (!unlockedStarIds.includes(starId)) {
+          unlockedStarIds.push(starId);
+        }
+
+        document.getElementById("starCodeLabel").textContent = star.code;
+        document.getElementById("starTitleLabel").textContent = star.title;
+        document.getElementById("starDescriptionText").textContent = star.desc;
+        document.getElementById("starMagnitudeText").textContent = star.magnitude;
+        document.getElementById("starDistanceText").textContent = star.distance;
+        document.getElementById("starIndexBadge").textContent = String(star.id).padStart(2, "0");
+        document.getElementById("constellationProgressText").textContent =
+          `${unlockedStarIds.length} / ${CONSTELLATION_STARS.length} BINTANG TERHUBUNG`;
+
+        renderStarButtons();
+        playStarChime(1 + starId * 0.08);
+      }
+
+      function renderStarButtons() {
+        const container = document.getElementById("starButtonsContainer");
+        container.innerHTML = "";
+        CONSTELLATION_STARS.forEach((star) => {
+          const isUnlocked = unlockedStarIds.includes(star.id);
+          const isActive = activeStarId === star.id;
+          const btn = document.createElement("button");
+          btn.className = `px-2.5 py-2 rounded-lg font-mono-tech text-[11px] transition-all border ${
+            isActive
+              ? "bg-white text-black border-white font-medium"
+              : isUnlocked
+              ? "bg-white/10 text-white border-white/30 hover:border-white"
+              : "bg-black/40 text-neutral-400 border-white/10 hover:border-white/30"
+          }`;
+          btn.textContent = `Bintang 0${star.id}`;
+          btn.addEventListener("click", () => selectConstellationStar(star.id));
+          container.appendChild(btn);
+        });
+      }
+
+      let constAnimPhase = 0;
+      function drawConstellationMap() {
+        const w = constCanvas.width;
+        const h = constCanvas.height;
+        constCtx.clearRect(0, 0, w, h);
+        constAnimPhase += 0.035;
+
+        constCtx.strokeStyle = "rgba(255, 255, 255, 0.04)";
+        constCtx.lineWidth = 1;
+        for (let x = w / 6; x < w; x += w / 6) {
+          constCtx.beginPath();
+          constCtx.moveTo(x, 0);
+          constCtx.lineTo(x, h);
+          constCtx.stroke();
+        }
+        for (let y = h / 4; y < h; y += h / 4) {
+          constCtx.beginPath();
+          constCtx.moveTo(0, y);
+          constCtx.lineTo(w, y);
+          constCtx.stroke();
+        }
+
+        customPlantedStars.forEach((cs) => {
+          constCtx.beginPath();
+          constCtx.arc(cs.xRatio * w, cs.yRatio * h, 2.2, 0, Math.PI * 2);
+          constCtx.fillStyle = "rgba(255, 255, 255, 0.75)";
+          constCtx.fill();
+        });
+
+        const sortedUnlocked = CONSTELLATION_STARS.filter((s) => unlockedStarIds.includes(s.id));
+        if (sortedUnlocked.length > 1) {
+          constCtx.beginPath();
+          sortedUnlocked.forEach((s, idx) => {
+            const sx = s.xRatio * w;
+            const sy = s.yRatio * h;
+            if (idx === 0) constCtx.moveTo(sx, sy);
+            else constCtx.lineTo(sx, sy);
+          });
+          constCtx.strokeStyle = "rgba(255, 255, 255, 0.45)";
+          constCtx.lineWidth = 1.5;
+          constCtx.setLineDash([4, 4]);
+          constCtx.stroke();
+          constCtx.setLineDash([]);
+        }
+
+        CONSTELLATION_STARS.forEach((s) => {
+          const sx = s.xRatio * w;
+          const sy = s.yRatio * h;
+          const isUnlocked = unlockedStarIds.includes(s.id);
+          const isActive = activeStarId === s.id;
+
+          if (isActive) {
+            const pulseR = 14 + Math.sin(constAnimPhase) * 3;
+            constCtx.beginPath();
+            constCtx.arc(sx, sy, pulseR, 0, Math.PI * 2);
+            constCtx.strokeStyle = "rgba(255, 255, 255, 0.55)";
+            constCtx.lineWidth = 1;
+            constCtx.stroke();
+          }
+
+          constCtx.beginPath();
+          constCtx.arc(sx, sy, isUnlocked ? 7 : 4.5, 0, Math.PI * 2);
+          constCtx.fillStyle = isUnlocked ? "rgba(255, 255, 255, 0.22)" : "rgba(255, 255, 255, 0.08)";
+          constCtx.fill();
+
+          constCtx.beginPath();
+          constCtx.arc(sx, sy, isUnlocked ? 4 : 2.8, 0, Math.PI * 2);
+          constCtx.fillStyle = isUnlocked ? "#ffffff" : "rgba(255, 255, 255, 0.45)";
+          constCtx.fill();
+
+          constCtx.font = "10px 'JetBrains Mono', monospace";
+          constCtx.fillStyle = isActive ? "#ffffff" : "rgba(255, 255, 255, 0.55)";
+          constCtx.fillText(`0${s.id}`, sx - 6, sy + 18);
+        });
+
+        requestAnimationFrame(drawConstellationMap);
+      }
+
+      constCanvas.addEventListener("click", (e) => {
+        const rect = constCanvas.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        const clickY = e.clientY - rect.top;
+        const w = constCanvas.width;
+        const h = constCanvas.height;
+
+        let matchedStar = null;
+        for (let i = 0; i < CONSTELLATION_STARS.length; i++) {
+          const s = CONSTELLATION_STARS[i];
+          const dist = Math.hypot(clickX - s.xRatio * w, clickY - s.yRatio * h);
+          if (dist < 26) {
+            matchedStar = s;
+            break;
+          }
+        }
+
+        if (matchedStar) {
+          selectConstellationStar(matchedStar.id);
+        } else {
+          customPlantedStars.push({
+            xRatio: clickX / w,
+            yRatio: clickY / h
+          });
+          document.getElementById("customStarCounter").textContent =
+            `BINTANG TAMBAHAN: ${customPlantedStars.length}`;
+          playStarChime(1.35);
+        }
+      });
+
+      // ==========================================
+      // 7. LUNAR & ORBITAL SLIDER INTERACTION
+      // ==========================================
+      const orbitSlider = document.getElementById("orbitRangeSlider");
+      function updateLunarPhase(deg) {
+        const degree = parseInt(deg, 10);
+        document.getElementById("orbitDegreeValue").textContent = `${degree}° / 360°`;
+
+        const shadowDisc = document.getElementById("moonShadowDisc");
+        const corona = document.getElementById("eclipseCorona");
+        const phaseName = document.getElementById("lunarPhaseName");
+        const quoteText = document.getElementById("lunarQuoteText");
+        const resVal = document.getElementById("gravityResonanceVal");
+
+        if (degree < 90) {
+          const offset = -12 - (degree / 90) * 28;
+          shadowDisc.style.transform = `translateX(${offset}px)`;
+          corona.style.opacity = "0.2";
+          phaseName.textContent = `FASE: BULAN SABIT AWAL (${degree}°)`;
+          quoteText.textContent = `"Setiap kisah besar di alam semesta dimulai dari satu titik cahaya kecil yang berani menembus gelapnya hdiup ku wkwkw."`;
+          resVal.textContent = "88.4% Bertumbuh";
+        } else if (degree < 180) {
+          const offset = -40 - ((degree - 90) / 90) * 65;
+          shadowDisc.style.transform = `translateX(${offset}px)`;
+          corona.style.opacity = "0.35";
+          phaseName.textContent = `FASE: MENUJU PURNAMA (${degree}°)`;
+          quoteText.textContent = `"Bahkan saat bulan hanya nampak separuh di langit malam, cahayanya tetap utuh menuntun langkahku menuju dirimu karena akan diberi bj dari mu"`;
+          resVal.textContent = "94.8% Stabil";
+        } else if (degree < 290) {
+          const offset = -140 + ((degree - 180) / 110) * 95;
+          shadowDisc.style.transform = `translateX(${offset}px)`;
+          corona.style.opacity = "0.55";
+          phaseName.textContent = `FASE: CAHAYA PURNAMA PENUH (${degree}°)`;
+          quoteText.textContent = `"Di bawah cahaya purnama hitam-putih ini, aku simpan satu harapan: semoga senyummu tidak pernah kehilangan sinarnya. soalnya aku nagihhh"`;
+          resVal.textContent = "98.2% Harmonis";
+        } else {
+          const offset = -45 + ((degree - 290) / 70) * 45;
+          shadowDisc.style.transform = `translateX(${offset}px) scale(0.94)`;
+          corona.style.opacity = "0.95";
+          phaseName.textContent = `FASE: SINKRONISASI 6 NOVEMBER (${degree}°)`;
+          quoteText.textContent = `"Pada titik 360 derajat di tanggal 6 bulan depan, seluruh orbit harus, wajib, dosa kalo ga bertemu untuk merayakan hari kelahiranmu, My Love."`;
+          resVal.textContent = "100% Terkunci Abadi";
+        }
+      }
+
+      orbitSlider.addEventListener("input", (e) => {
+        updateLunarPhase(e.target.value);
+      });
+
+      // ==========================================
+      // 8. COSMIC LOVE LETTER TYPEWRITER
+      // ==========================================
+      let typewriterInterval = null;
+
+      function renderLetterInstant() {
+        if (typewriterInterval) {
+          clearInterval(typewriterInterval);
+          typewriterInterval = null;
+        }
+        const box = document.getElementById("letterContentBox");
+        box.innerHTML = "";
+        appConfig.letterParagraphs.forEach((pText) => {
+          const p = document.createElement("p");
+          p.textContent = pText;
+          box.appendChild(p);
+        });
+      }
+
+      function startLetterTypewriter() {
+        if (typewriterInterval) {
+          clearInterval(typewriterInterval);
+          typewriterInterval = null;
+        }
+        const box = document.getElementById("letterContentBox");
+        box.innerHTML = "";
+        const fullParagraphs = appConfig.letterParagraphs;
+        let pIndex = 0;
+        let charIndex = 0;
+        let currentPElem = document.createElement("p");
+        box.appendChild(currentPElem);
+
+        typewriterInterval = setInterval(() => {
+          if (pIndex >= fullParagraphs.length) {
+            clearInterval(typewriterInterval);
+            typewriterInterval = null;
+            return;
+          }
+          const currentText = fullParagraphs[pIndex];
+          if (charIndex < currentText.length) {
+            currentPElem.textContent += currentText.charAt(charIndex);
+            charIndex++;
+          } else {
+            pIndex++;
+            charIndex = 0;
+            if (pIndex < fullParagraphs.length) {
+              currentPElem = document.createElement("p");
+              box.appendChild(currentPElem);
+            }
+          }
+        }, 18);
+      }
+
+      // ==========================================
+      // 9. SHOOTING STAR WISHES CAPSULE
+      // ==========================================
+      function renderWishes() {
+        const container = document.getElementById("wishListContainer");
+        const badge = document.getElementById("wishCountBadge");
+        container.innerHTML = "";
+        badge.textContent = `${appConfig.wishes.length} HARAPAN TERSIMPAN`;
+
+        if (appConfig.wishes.length === 0) {
+          const emptyMessage = document.createElement("p");
+          emptyMessage.className = "font-mono-tech text-xs text-neutral-500 text-center py-6";
+          emptyMessage.textContent = "BELUM ADA HARAPAN TERSIMPAN";
+          container.appendChild(emptyMessage);
+          return;
+        }
+
+        appConfig.wishes.map((wish, index) => ({ wish, index })).reverse().forEach(({ wish, index }) => {
+          const item = document.createElement("div");
+          item.className = "p-4 rounded-xl bg-white/[0.03] border border-white/10 flex flex-col gap-1.5";
+          const header = document.createElement("div");
+          header.className = "flex items-center justify-between font-mono-tech text-[10px] text-neutral-400";
+          const transmissionLabel = document.createElement("span");
+          transmissionLabel.textContent = "TRANSMISI HARAPAN";
+          const headerActions = document.createElement("div");
+          headerActions.className = "flex items-center gap-3";
+          const orbitLabel = document.createElement("span");
+          orbitLabel.textContent = wish.time || "ORBIT";
+          const deleteButton = document.createElement("button");
+          deleteButton.type = "button";
+          deleteButton.className = "text-neutral-400 hover:text-white underline underline-offset-2 focus:outline-none focus-visible:ring-1 focus-visible:ring-white rounded";
+          deleteButton.textContent = "HAPUS";
+          deleteButton.setAttribute("aria-label", `Hapus harapan ${wish.time || `nomor ${index + 1}`}`);
+          deleteButton.addEventListener("click", () => {
+            appConfig.wishes.splice(index, 1);
+            saveState();
+            renderWishes();
+            showToast("HARAPAN DIHAPUS DARI KAPSUL ORBIT");
+          });
+          header.appendChild(transmissionLabel);
+          headerActions.appendChild(orbitLabel);
+          headerActions.appendChild(deleteButton);
+          header.appendChild(headerActions);
+          const body = document.createElement("p");
+          body.className = "font-serif-editorial text-lg text-white leading-snug";
+          body.textContent = `"${wish.text}"`;
+          item.appendChild(header);
+          item.appendChild(body);
+          container.appendChild(item);
+        });
+      }
+
+      const wishInput = document.getElementById("wishInput");
+      wishInput.addEventListener("input", () => {
+        document.getElementById("wishCharCount").textContent = wishInput.value.length;
+      });
+
+      document.getElementById("launchWishBtn").addEventListener("click", () => {
+        const val = wishInput.value.trim();
+        if (!val) {
+          showToast("TULIS HARAPAN TERLEBIH DAHULU");
+          return;
+        }
+        const orbitNumber = String(appConfig.wishes.length + 1).padStart(2, "0");
+        appConfig.wishes.push({
+          text: val,
+          time: `ORBIT // ${orbitNumber}`
+        });
+        wishInput.value = "";
+        document.getElementById("wishCharCount").textContent = "0";
+        saveState();
+        renderWishes();
+        triggerGravityWave();
+        triggerMeteorShower(6);
+        playStarChime(1.25);
+        showToast("HARAPAN DILUNCURKAN MELINTASI HORIZON");
+      });
+
+      // ==========================================
+      // 10. INITIALIZATION & UI LISTENERS
+      // ==========================================
+      function applyConfigToDOM() {
+        const formattedDate = formatIndonesianDate(appConfig.targetDateISO);
+        document.getElementById("gateDateLabel").textContent = formattedDate;
+        document.getElementById("heroTargetDateText").textContent = formattedDate;
+        document.getElementById("heroRecipientName").textContent = appConfig.recipientName;
+        document.getElementById("navRecipientLabel").textContent = `UNTUK ${appConfig.recipientName.toUpperCase()}`;
+        document.getElementById("letterRecipientName").textContent = appConfig.recipientName.toUpperCase();
+        document.getElementById("letterSenderName").textContent = appConfig.senderName;
+        renderLetterInstant();
+        renderWishes();
+        updateCountdown();
+      }
+
+      const introGate = document.getElementById("introGate");
+      function dismissIntroGate(withAudio) {
+        if (withAudio) {
+          startMellowMusic();
+        }
+        triggerGravityWave();
+        triggerMeteorShower(10);
+        introGate.classList.add("opacity-0", "pointer-events-none");
+        setTimeout(() => {
+          introGate.style.display = "none";
+        }, 1000);
+      }
+
+      document.getElementById("enterWithAudioBtn").addEventListener("click", () => dismissIntroGate(true));
+      document.getElementById("enterSilentBtn").addEventListener("click", () => dismissIntroGate(false));
+
+      document.getElementById("audioToggleBtn").addEventListener("click", () => {
+        if (isPlayingAudio) {
+          stopMellowMusic();
+          showToast("LAGU MELLOW DIHENTIKAN");
+        } else {
+          startMellowMusic();
+          showToast("MEMUTAR LAGU MELLOW ANGKASA");
+        }
+      });
+
+      document.getElementById("melodySelect").addEventListener("change", (e) => {
+        currentMelodyKey = e.target.value;
+        stepIndex = 0;
+        if (!isPlayingAudio) {
+          startMellowMusic();
+        }
+        showToast("MELODI DIGANTI");
+      });
+
+      document.getElementById("meteorShowerBtn").addEventListener("click", () => {
+        triggerMeteorShower(12);
+        playStarChime(1.5);
+        showToast("HUJAN BINTANG JATUH MELINTASI LANGIT");
+      });
+
+      document.getElementById("footerMeteorBtn").addEventListener("click", () => {
+        triggerMeteorShower(12);
+        playStarChime(1.5);
+        showToast("HUJAN BINTANG JATUH MELINTASI LANGIT");
+      });
+
+      document.getElementById("toggleBirthdaySimBtn").addEventListener("click", (e) => {
+        simulateBirthdayDay = !simulateBirthdayDay;
+        e.currentTarget.textContent = simulateBirthdayDay
+          ? "Kembali ke Hitung Mundur"
+          : "Simulasi Hari-H (06 Nov)";
+        if (simulateBirthdayDay) {
+          triggerGravityWave();
+          triggerMeteorShower(15);
+          showToast("MODE SIMULASI HARI ULANG TAHUN AKTIF");
+        }
+        updateCountdown();
+      });
+
+      document.getElementById("connectAllStarsBtn").addEventListener("click", () => {
+        unlockedStarIds = CONSTELLATION_STARS.map((s) => s.id);
+        selectConstellationStar(6);
+        triggerMeteorShower(7);
+        showToast("SELURUH RASI BINTANG TERHUBUNG");
+      });
+
+      document.getElementById("resetStarsBtn").addEventListener("click", () => {
+        unlockedStarIds = [1];
+        customPlantedStars = [];
+        document.getElementById("customStarCounter").textContent = "BINTANG TAMBAHAN: 0";
+        selectConstellationStar(1);
+        showToast("PETA RASI BINTANG DIRESET");
+      });
+
+      document.getElementById("replayTypewriterBtn").addEventListener("click", () => {
+        startLetterTypewriter();
+      });
+
+      document.getElementById("instantShowLetterBtn").addEventListener("click", () => {
+        renderLetterInstant();
+      });
+
+      // Boot sequence
+      resizeCosmos();
+      initStarsAndAccretion();
+      initInteractiveTiltCards();
+      renderCosmos();
+
+      resizeConstellationCanvas();
+      selectConstellationStar(1);
+      drawConstellationMap();
+
+      updateLunarPhase(120);
+      applyConfigToDOM();
+      setInterval(updateCountdown, 1000);
+    })();
+  </script>
+</body>
+</html>
