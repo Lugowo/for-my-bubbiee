@@ -937,17 +937,38 @@
         ]
       };
 
-      let appConfig = JSON.parse(JSON.stringify(DEFAULT_CONFIG));
+      const WISHES_STORAGE_KEY = "cosmic_bday_0611_wishes";
 
-      function saveState() {
-        // Kosongkan agar perubahan tidak disimpan ke cache browser
+      function loadSavedWishes() {
+        try {
+          const savedWishes = localStorage.getItem(WISHES_STORAGE_KEY);
+          if (savedWishes === null) {
+            return DEFAULT_CONFIG.wishes.map((wish) => ({ ...wish }));
+          }
+
+          const parsedWishes = JSON.parse(savedWishes);
+          if (!Array.isArray(parsedWishes) || !parsedWishes.every((wish) =>
+            wish && typeof wish.text === "string" && typeof wish.time === "string"
+          )) {
+            throw new Error("Data harapan tersimpan memiliki format yang tidak valid.");
+          }
+
+          return parsedWishes;
+        } catch (error) {
+          console.error("Gagal memuat harapan tersimpan:", error);
+          return DEFAULT_CONFIG.wishes.map((wish) => ({ ...wish }));
+        }
       }
+
+      let appConfig = JSON.parse(JSON.stringify(DEFAULT_CONFIG));
+      appConfig.wishes = loadSavedWishes();
 
       function saveState() {
         try {
-          localStorage.setItem("cosmic_bday_0611_interstellar", JSON.stringify(appConfig));
-        } catch (e) {
-          // Ignore storage error
+          localStorage.setItem(WISHES_STORAGE_KEY, JSON.stringify(appConfig.wishes));
+        } catch (error) {
+          console.error("Gagal menyimpan harapan:", error);
+          showToast("HARAPAN GAGAL DISIMPAN DI BROWSER");
         }
       }
 
